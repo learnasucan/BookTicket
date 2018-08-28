@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--RegistrationVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Book_Ticket" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="RegistrationVC" customModule="Book_Ticket" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -69,6 +69,9 @@
                                         <state key="normal" title="Save">
                                             <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="tapOnButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eJs-gK-jMb"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -86,6 +89,14 @@
                     </view>
                     <navigationItem key="navigationItem" id="FAD-pg-Y7P"/>
                     <connections>
+                        <outlet property="addressTextField" destination="YhR-lM-z01" id="6yM-Zm-68h"/>
+                        <outlet property="confirmPasswordTextField" destination="zTX-Iw-KNl" id="fsU-To-jvH"/>
+                        <outlet property="emailTextField" destination="VyL-2q-8BA" id="VFT-6s-Fq6"/>
+                        <outlet property="mobileTextField" destination="FHN-dp-JpF" id="e1Q-BR-oKr"/>
+                        <outlet property="nameTextField" destination="9az-c9-RF7" id="SCy-4B-Cv0"/>
+                        <outlet property="passwordTextField" destination="zH0-Hg-aYQ" id="qDf-pd-UHS"/>
+                        <outlet property="pincodeTextField" destination="6ql-zX-gVe" id="OqP-Ff-OT3"/>
+                        <outlet property="submitButton" destination="M7B-Br-X0P" id="j9p-fS-EuD"/>
                         <segue destination="grT-r4-6Ky" kind="show" id="n4f-XD-8l1"/>
                     </connections>
                 </viewController>
@@ -93,10 +104,10 @@
             </objects>
             <point key="canvasLocation" x="580" y="745.27736131934034"/>
         </scene>
-        <!--View Controller-->
+        <!--LoginVC-->
         <scene sceneID="dDG-f5-bMY">
             <objects>
-                <viewController id="grT-r4-6Ky" sceneMemberID="viewController">
+                <viewController id="grT-r4-6Ky" customClass="LoginVC" customModule="Book_Ticket" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Yxp-sC-p0K">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -158,10 +169,10 @@
             </objects>
             <point key="canvasLocation" x="1304.8" y="747.9760119940031"/>
         </scene>
-        <!--View Controller-->
+        <!--HomeVC-->
         <scene sceneID="CG8-pM-KwP">
             <objects>
-                <viewController id="DQA-E1-ET5" sceneMemberID="viewController">
+                <viewController id="DQA-E1-ET5" customClass="HomeVC" customModule="Book_Ticket" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MRx-f4-IkJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
