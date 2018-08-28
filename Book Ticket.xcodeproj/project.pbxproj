@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03753361283DFB055E7AD659 /* Pods_Book_TicketTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D29491D820C2FB14B7953F55 /* Pods_Book_TicketTests.framework */; };
+		3555A1642135768C00C46B41 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3555A1632135768C00C46B41 /* Utilities.swift */; };
+		3555A1662135783E00C46B41 /* CoreDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3555A1652135783E00C46B41 /* CoreDataHandler.swift */; };
+		3555A16821359B7D00C46B41 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3555A16721359B7D00C46B41 /* Constants.swift */; };
 		35F1C24721344A5E000DB590 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F1C24621344A5E000DB590 /* AppDelegate.swift */; };
-		35F1C24921344A5E000DB590 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F1C24821344A5E000DB590 /* ViewController.swift */; };
 		35F1C24C21344A5E000DB590 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35F1C24A21344A5E000DB590 /* Main.storyboard */; };
 		35F1C24F21344A5E000DB590 /* Book_Ticket.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 35F1C24D21344A5E000DB590 /* Book_Ticket.xcdatamodeld */; };
 		35F1C25121344A6D000DB590 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35F1C25021344A6D000DB590 /* Assets.xcassets */; };
@@ -19,6 +22,8 @@
 		35F1C27D21345991000DB590 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F1C27C21345991000DB590 /* LoginVC.swift */; };
 		35F1C27F213459A7000DB590 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F1C27E213459A7000DB590 /* HomeVC.swift */; };
 		35F1C281213459C9000DB590 /* BookTicketVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F1C280213459C9000DB590 /* BookTicketVC.swift */; };
+		ABFFEDA1CBC30D4F6C5BB61D /* Pods_Book_TicketUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9381E723932CDCFB0E68110D /* Pods_Book_TicketUITests.framework */; };
+		C5932B576D3B279F2C9FB84B /* Pods_Book_Ticket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8F143E61D5FC9257B6E2192 /* Pods_Book_Ticket.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,9 +44,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0314027B6578005CE4E1487C /* Pods-Book Ticket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Book Ticket.release.xcconfig"; path = "Pods/Target Support Files/Pods-Book Ticket/Pods-Book Ticket.release.xcconfig"; sourceTree = "<group>"; };
+		2CBC557287D8EC89CCD829AE /* Pods-Book TicketTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Book TicketTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Book TicketTests/Pods-Book TicketTests.debug.xcconfig"; sourceTree = "<group>"; };
+		3555A1632135768C00C46B41 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		3555A1652135783E00C46B41 /* CoreDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHandler.swift; sourceTree = "<group>"; };
+		3555A16721359B7D00C46B41 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		35F1C24321344A5E000DB590 /* Book Ticket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Book Ticket.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		35F1C24621344A5E000DB590 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		35F1C24821344A5E000DB590 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		35F1C24B21344A5E000DB590 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		35F1C24E21344A5E000DB590 /* Book_Ticket.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Book_Ticket.xcdatamodel; sourceTree = "<group>"; };
 		35F1C25021344A6D000DB590 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -57,6 +66,13 @@
 		35F1C27C21345991000DB590 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		35F1C27E213459A7000DB590 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		35F1C280213459C9000DB590 /* BookTicketVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTicketVC.swift; sourceTree = "<group>"; };
+		4BBB5CE9A91DC60E0EF726F7 /* Pods-Book TicketUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Book TicketUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Book TicketUITests/Pods-Book TicketUITests.release.xcconfig"; sourceTree = "<group>"; };
+		717F4E5BA2CBFD2E3AA4099B /* Pods-Book TicketTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Book TicketTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Book TicketTests/Pods-Book TicketTests.release.xcconfig"; sourceTree = "<group>"; };
+		9381E723932CDCFB0E68110D /* Pods_Book_TicketUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Book_TicketUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8F143E61D5FC9257B6E2192 /* Pods_Book_Ticket.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Book_Ticket.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D29491D820C2FB14B7953F55 /* Pods_Book_TicketTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Book_TicketTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DCC325D8D3B1350DF8A426E2 /* Pods-Book Ticket.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Book Ticket.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Book Ticket/Pods-Book Ticket.debug.xcconfig"; sourceTree = "<group>"; };
+		E4B9B55F63A243AE9A9E043E /* Pods-Book TicketUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Book TicketUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Book TicketUITests/Pods-Book TicketUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5932B576D3B279F2C9FB84B /* Pods_Book_Ticket.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03753361283DFB055E7AD659 /* Pods_Book_TicketTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,12 +96,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABFFEDA1CBC30D4F6C5BB61D /* Pods_Book_TicketUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3555A1622135766400C46B41 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				3555A1632135768C00C46B41 /* Utilities.swift */,
+				3555A1652135783E00C46B41 /* CoreDataHandler.swift */,
+				3555A16721359B7D00C46B41 /* Constants.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		35F1C23A21344A5E000DB590 = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +120,8 @@
 				35F1C25D21344A6E000DB590 /* Book TicketTests */,
 				35F1C26821344A6E000DB590 /* Book TicketUITests */,
 				35F1C24421344A5E000DB590 /* Products */,
+				503A0921CD3E4D36CB58D7BD /* Pods */,
+				F5A768D75CBFB181F25136A6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -107,11 +138,11 @@
 		35F1C24521344A5E000DB590 /* Book Ticket */ = {
 			isa = PBXGroup;
 			children = (
+				3555A1622135766400C46B41 /* Utility */,
 				35F1C277213458F3000DB590 /* Model */,
 				35F1C2792134591F000DB590 /* View */,
 				35F1C27821345903000DB590 /* Controller */,
 				35F1C25521344A6D000DB590 /* Info.plist */,
-				35F1C24D21344A5E000DB590 /* Book_Ticket.xcdatamodeld */,
 			);
 			path = "Book Ticket";
 			sourceTree = "<group>";
@@ -137,6 +168,7 @@
 		35F1C277213458F3000DB590 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				35F1C24D21344A5E000DB590 /* Book_Ticket.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -145,7 +177,6 @@
 			isa = PBXGroup;
 			children = (
 				35F1C24621344A5E000DB590 /* AppDelegate.swift */,
-				35F1C24821344A5E000DB590 /* ViewController.swift */,
 				35F1C27A21345966000DB590 /* RegistrationVC.swift */,
 				35F1C27C21345991000DB590 /* LoginVC.swift */,
 				35F1C27E213459A7000DB590 /* HomeVC.swift */,
@@ -164,6 +195,29 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		503A0921CD3E4D36CB58D7BD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DCC325D8D3B1350DF8A426E2 /* Pods-Book Ticket.debug.xcconfig */,
+				0314027B6578005CE4E1487C /* Pods-Book Ticket.release.xcconfig */,
+				2CBC557287D8EC89CCD829AE /* Pods-Book TicketTests.debug.xcconfig */,
+				717F4E5BA2CBFD2E3AA4099B /* Pods-Book TicketTests.release.xcconfig */,
+				E4B9B55F63A243AE9A9E043E /* Pods-Book TicketUITests.debug.xcconfig */,
+				4BBB5CE9A91DC60E0EF726F7 /* Pods-Book TicketUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		F5A768D75CBFB181F25136A6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B8F143E61D5FC9257B6E2192 /* Pods_Book_Ticket.framework */,
+				D29491D820C2FB14B7953F55 /* Pods_Book_TicketTests.framework */,
+				9381E723932CDCFB0E68110D /* Pods_Book_TicketUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -171,9 +225,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 35F1C26E21344A6E000DB590 /* Build configuration list for PBXNativeTarget "Book Ticket" */;
 			buildPhases = (
+				AE51415CBE1F9A6A2A14C2F6 /* [CP] Check Pods Manifest.lock */,
 				35F1C23F21344A5E000DB590 /* Sources */,
 				35F1C24021344A5E000DB590 /* Frameworks */,
 				35F1C24121344A5E000DB590 /* Resources */,
+				F94879445EED74C3159F36B0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -188,6 +244,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 35F1C27121344A6E000DB590 /* Build configuration list for PBXNativeTarget "Book TicketTests" */;
 			buildPhases = (
+				96A9F222B1972B77A4402775 /* [CP] Check Pods Manifest.lock */,
 				35F1C25621344A6E000DB590 /* Sources */,
 				35F1C25721344A6E000DB590 /* Frameworks */,
 				35F1C25821344A6E000DB590 /* Resources */,
@@ -206,6 +263,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 35F1C27421344A6E000DB590 /* Build configuration list for PBXNativeTarget "Book TicketUITests" */;
 			buildPhases = (
+				4D88E3A046DA2504CB568E2B /* [CP] Check Pods Manifest.lock */,
 				35F1C26121344A6E000DB590 /* Sources */,
 				35F1C26221344A6E000DB590 /* Frameworks */,
 				35F1C26321344A6E000DB590 /* Resources */,
@@ -290,18 +348,95 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4D88E3A046DA2504CB568E2B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Book TicketUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		96A9F222B1972B77A4402775 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Book TicketTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AE51415CBE1F9A6A2A14C2F6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Book Ticket-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F94879445EED74C3159F36B0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Book Ticket/Pods-Book Ticket-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Book Ticket/Pods-Book Ticket-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		35F1C23F21344A5E000DB590 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35F1C24921344A5E000DB590 /* ViewController.swift in Sources */,
 				35F1C24721344A5E000DB590 /* AppDelegate.swift in Sources */,
+				3555A1662135783E00C46B41 /* CoreDataHandler.swift in Sources */,
 				35F1C24F21344A5E000DB590 /* Book_Ticket.xcdatamodeld in Sources */,
+				3555A1642135768C00C46B41 /* Utilities.swift in Sources */,
 				35F1C27F213459A7000DB590 /* HomeVC.swift in Sources */,
 				35F1C27B21345966000DB590 /* RegistrationVC.swift in Sources */,
 				35F1C27D21345991000DB590 /* LoginVC.swift in Sources */,
 				35F1C281213459C9000DB590 /* BookTicketVC.swift in Sources */,
+				3555A16821359B7D00C46B41 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,11 +607,13 @@
 		};
 		35F1C26F21344A6E000DB590 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DCC325D8D3B1350DF8A426E2 /* Pods-Book Ticket.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZTYSYRKNLZ;
 				INFOPLIST_FILE = "Book Ticket/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -490,11 +627,13 @@
 		};
 		35F1C27021344A6E000DB590 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0314027B6578005CE4E1487C /* Pods-Book Ticket.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZTYSYRKNLZ;
 				INFOPLIST_FILE = "Book Ticket/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -508,6 +647,7 @@
 		};
 		35F1C27221344A6E000DB590 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2CBC557287D8EC89CCD829AE /* Pods-Book TicketTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -529,6 +669,7 @@
 		};
 		35F1C27321344A6E000DB590 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 717F4E5BA2CBFD2E3AA4099B /* Pods-Book TicketTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -550,6 +691,7 @@
 		};
 		35F1C27521344A6E000DB590 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4B9B55F63A243AE9A9E043E /* Pods-Book TicketUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -570,6 +712,7 @@
 		};
 		35F1C27621344A6E000DB590 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4BBB5CE9A91DC60E0EF726F7 /* Pods-Book TicketUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
