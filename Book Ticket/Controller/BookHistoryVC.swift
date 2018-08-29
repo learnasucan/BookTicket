@@ -1,39 +1,15 @@
 //
-//  HomeVC.swift
+//  BookHistoryVC.swift
 //  Book Ticket
 //
-//  Created by SOLUTIONPLANETS on 27/08/18.
+//  Created by SOLUTIONPLANETS on 29/08/18.
 //  Copyright © 2018 SOLUTIONPLANETS. All rights reserved.
 //
 
 import UIKit
 
-class HomeVC: UIViewController {
+class BookHistoryVC: UIViewController {
 
-    //---------------------------
-    //MARK:IBOutlets and Variables
-    //----------------------------
-    
-    @IBOutlet weak var bookTicketButton: UIButton!
-    
-    @IBOutlet weak var bookHistoryButton: UIButton!
-    
-    //---------------------------
-    //MARK:Button Actions
-    //----------------------------
-    
-    @IBAction func tapOnTicket(_ sender: UIButton) {
-        
-        performSegue(withIdentifier: "BookTicketVC", sender: self)
-    }
-    
-    
-    @IBAction func tapOnHistory(_ sender: UIButton) {
-        
-        performSegue(withIdentifier: "BookHistoryVC", sender: self)
-    }
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 

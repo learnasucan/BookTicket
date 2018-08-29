@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class Utilities: NSObject {
     
@@ -59,5 +60,109 @@ class Utilities: NSObject {
         }))
         VC.present(alertController, animated: true)
     }
+    
+    //  Get Context for core data
+    
+    class func getContext () -> NSManagedObjectContext {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.persistentContainer.viewContext
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+//
+}
 
+//MARK:UserDefaults
+enum UserDefaultsKeys : String {
+    case isLoggedIn
+    case userID
+    case userName
+    case userEmail
+    case userMobile
+    case userAddress
+    case userPin
+}
+
+extension UserDefaults{
+    
+    //MARK: Check Login
+    func setLoggedIn(value: Bool) {
+        set(value, forKey: UserDefaultsKeys.isLoggedIn.rawValue)
+        //synchronize()
+    }
+    
+    func isLoggedIn()-> Bool {
+        return bool(forKey: UserDefaultsKeys.isLoggedIn.rawValue)
+    }
+    
+    //MARK: Save User Data
+    func setUserID(value: Int){
+        set(value, forKey: UserDefaultsKeys.userID.rawValue)
+        //synchronize()
+    }
+    
+    func setUserName(value: String){
+        set(value, forKey: UserDefaultsKeys.userName.rawValue)
+        //synchronize()
+    }
+    
+    func setUserEmail(value: String){
+        set(value, forKey: UserDefaultsKeys.userEmail.rawValue)
+        //synchronize()
+    }
+    
+    func setUserMobile(value: String){
+        set(value, forKey: UserDefaultsKeys.userMobile.rawValue)
+        //synchronize()
+    }
+    
+    func setUserAdd(value: String){
+        set(value, forKey: UserDefaultsKeys.userAddress.rawValue)
+        //synchronize()
+    }
+    
+    func setUserPin(value: String){
+        set(value, forKey: UserDefaultsKeys.userPin.rawValue)
+        //synchronize()
+    }
+    
+    //MARK: Retrieve User Data
+    func getUserID() -> Int{
+        return integer(forKey: UserDefaultsKeys.userID.rawValue)
+    }
+    
+    func getUserName() -> String{
+        return UserDefaultsKeys.userName.rawValue
+    }
+    
+    func getUserEmail() -> String{
+        return UserDefaultsKeys.userEmail.rawValue
+    }
+    
+    func getUserMobile() -> String{
+        return UserDefaultsKeys.userMobile.rawValue
+    }
+    
+    func getUserAdd() -> String{
+        return UserDefaultsKeys.userAddress.rawValue
+    }
+    
+    func getUserPin() -> String{
+        return UserDefaultsKeys.userPin.rawValue
+    }
+    
+ 
+ 
 }

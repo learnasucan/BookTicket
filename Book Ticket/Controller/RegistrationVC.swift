@@ -31,26 +31,39 @@ class RegistrationVC: UIViewController {
     
     @IBOutlet weak var submitButton: UIButton!
     
-    var customers = [NSManagedObjectContext] ()
+    var customers = [NSManagedObject] ()
     
     //------------------------------------
     //MARK: Button Actions
     //------------------------------------
     
     @IBAction func tapOnButton(_ sender: UIButton) {
-        storeData(name: nameTextField.text!, address: addressTextField.text!, pincode: pincodeTextField.text!, mobile: mobileTextField.text!, email: emailTextField.text!, password: passwordTextField.text!)
+        
+        let parameters : [String: Any] = ["name": nameTextField.text!,
+                                          "address": addressTextField.text!,
+                                          "pincode" : pincodeTextField.text!,
+                                          "mobile" : mobileTextField.text!,
+                                          "email": emailTextField.text!,
+                                          "password":passwordTextField.text!]
+            
+            
+        storeData(parameter: parameters)
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //TextField Validation
         emailTextField.delegate = self
         nameTextField.delegate = self
         mobileTextField.delegate = self
         passwordTextField.delegate = self
         pincodeTextField.delegate = self
         confirmPasswordTextField.delegate = self
+        
+        //CoreData Access
+        //getData()
         
     }
     
@@ -63,16 +76,9 @@ class RegistrationVC: UIViewController {
     //------------------------------------
     
 
-    // Get Context
-    
-    func getContext () -> NSManagedObjectContext {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        return appDelegate.persistentContainer.viewContext
-    }
-    
     // Save the Data
-    func storeData (name: String, address: String, pincode: String, mobile: String,email: String,password: String) {
-        let context = getContext()
+    func storeData (parameter: [String : Any]) {
+        let context = Utilities.getContext()
         
         //retrieve the entity that we just created
         let entity =  NSEntityDescription.entity(forEntityName: "Customer", in: context)
@@ -80,20 +86,34 @@ class RegistrationVC: UIViewController {
         let customer = NSManagedObject(entity: entity!, insertInto: context)
         
         //set the entity values
-        customer.setValue(name, forKey: "name")
-        customer.setValue(address, forKey: "address")
-        customer.setValue(pincode, forKey: "pincode")
-        customer.setValue(mobile, forKey: "mobile")
-        customer.setValue(email, forKey: "email")
-        customer.setValue(password, forKey: "password")
+        customer.setValue(parameter["name"], forKey: "name")
+        customer.setValue(parameter["address"], forKey: "address")
+        customer.setValue(parameter["pincode"], forKey: "pincode")
+        customer.setValue(parameter["mobile"], forKey: "mobile")
+        customer.setValue(parameter["email"], forKey: "email")
+        customer.setValue(parameter["password"], forKey: "password")
         
         //save the object
         do {
             try context.save()
             print("saved!")
-//            customers.append(customer)
+            customers.append(customer)
+            
+            //TODO: Make function
+            nameTextField.text = ""
+            addressTextField.text = ""
+            pincodeTextField.text = ""
+            mobileTextField.text = ""
+            emailTextField.text = ""
+            passwordTextField.text = ""
+            confirmPasswordTextField.text = ""
             print(customers.count)
 //            print(customers[0].value(forKey: "name") as Any)
+            
+            //At last move to LoginVC
+            defer {
+                performSegue(withIdentifier: "LoginVC", sender: self)
+            }
         } catch let error as NSError  {
             print("Could not save \(error), \(error.userInfo)")
         } catch {
@@ -102,29 +122,7 @@ class RegistrationVC: UIViewController {
     }
 
     
-    //Retrieve the Data
-    
-    func getData () {
-        //create a fetch request, telling it about the entity
-        let fetchRequest: NSFetchRequest<Customer> = Customer.fetchRequest()
-        
-        do {
-            //go get the results
-            let searchResults = try getContext().fetch(fetchRequest)
-            
-            //I like to check the size of the returned results!
-            print ("num of results = \(searchResults.count)")
-            
-            //You need to convert to NSManagedObject to use 'for' loops
-            for customer in searchResults as [NSManagedObject] {
-                //get the Key Value pairs (although there may be a better way to do that...
-                print("\(Customer.value(forKey: "name"))")
-            }
-        } catch {
-            print("Error with request: \(error)")
-        }
-    }
-    
+   
     
     
 }
