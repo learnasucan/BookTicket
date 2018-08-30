@@ -16,20 +16,14 @@ class RegistrationVC: UIViewController {
     //------------------------------------
     
     @IBOutlet weak var nameTextField: UITextField!
-
     @IBOutlet weak var addressTextField: UITextField!
-    
     @IBOutlet weak var pincodeTextField: UITextField!
-    
     @IBOutlet weak var mobileTextField: UITextField!
-    
     @IBOutlet weak var emailTextField: UITextField!
-    
     @IBOutlet weak var passwordTextField: UITextField!
-    
     @IBOutlet weak var confirmPasswordTextField: UITextField!
-    
     @IBOutlet weak var submitButton: UIButton!
+    
     
     var customers = [NSManagedObject] ()
     
@@ -45,9 +39,17 @@ class RegistrationVC: UIViewController {
                                           "mobile" : mobileTextField.text!,
                                           "email": emailTextField.text!,
                                           "password":passwordTextField.text!]
-            
+
+        
+        let dict:RegistrationModel = parameters.toModel()
+        print(dict)
+        
             
         storeData(parameter: parameters)
+    }
+    
+    @IBAction func tapOnSignIn(_ sender: UIButton) {
+         performSegue(withIdentifier: "LoginVC", sender: self)
     }
     
     
@@ -127,86 +129,51 @@ class RegistrationVC: UIViewController {
     
 }
 
+
+extension Dictionary {
+    
+    func toModel<T:Codable>() -> T{
+        
+        let jsonData = try? JSONSerialization.data(withJSONObject: self, options: .prettyPrinted)
+        
+        let dict = try? JSONDecoder().decode(T.self, from: jsonData!)
+        
+        return dict!
+        
+    }
+    
+    
+}
+
 extension RegistrationVC : UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
         
         switch textField {
         case nameTextField:
-            let name_reg = "[A-Za-z0-9]{5,20}"
-            
-            let name_test = NSPredicate(format: "SELF MATCHES %@", name_reg)
-            
-            if name_test.evaluate(with: nameTextField.text) == false
-            {
-                let alert = UIAlertController(title: "Information", message: "Enter the name in correct format", preferredStyle: .alert)
-                let ok = UIAlertAction(title: "Ok", style: .default, handler: nil)
-                let cancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
-                
-                alert.addAction(ok)
-                alert.addAction(cancel)
-                
-                self.present(alert, animated: true, completion: nil)
-            }
+            Utilities.nameValidation(textField: nameTextField, view: self)
             break
+            
         case addressTextField:
             break
+            
         case pincodeTextField:
-            let pin_reg = "[0-9]{6}"
-            
-            let pin_test = NSPredicate(format: "SELF MATCHES %@", pin_reg)
-            
-            if pin_test.evaluate(with: pincodeTextField.text) == false
-            {
-                let alert = UIAlertController(title: "Information", message: "Enter 6 digit pincode", preferredStyle: .alert)
-                let ok = UIAlertAction(title: "Ok", style: .default, handler: nil)
-                let cancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
-                
-                alert.addAction(ok)
-                alert.addAction(cancel)
-                
-                self.present(alert, animated: true, completion: nil)
-            }
+            Utilities.pinCodeValidation(textField: pincodeTextField, view: self)
             break
+            
         case mobileTextField:
-            let mobile_reg = "[0-9]{10}"
-            
-            let mobile_test = NSPredicate(format: "SELF MATCHES %@", mobile_reg)
-            
-            if mobile_test.evaluate(with: mobileTextField.text) == false
-            {
-                let alert = UIAlertController(title: "Information", message: "Enter your number in correct format", preferredStyle: .alert)
-                let ok = UIAlertAction(title: "Ok", style: .default, handler: nil)
-                let cancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
-                
-                alert.addAction(ok)
-                alert.addAction(cancel)
-                
-                self.present(alert, animated: true, completion: nil)
-            }
-            
+            Utilities.mobileValidation(textField: mobileTextField, view: self)
             break
+            
         case emailTextField:
-            let email_reg = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
-            
-            let email_test = NSPredicate(format: "SELF MATCHES %@", email_reg)
-            
-            if email_test.evaluate(with: emailTextField.text) == false
-            {
-                let alert = UIAlertController(title: "Information", message: "Please enter valid email id.", preferredStyle: .alert)
-                let ok = UIAlertAction(title: "Ok", style: .default, handler: nil)
-                let cancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
-                
-                alert.addAction(ok)
-                alert.addAction(cancel)
-                
-                self.present(alert, animated: true, completion: nil)
-            }
+            Utilities.emailValidation(textField: emailTextField, view: self)
             break
+            
         case passwordTextField:
             break
+            
         case confirmPasswordTextField:
-            if confirmPasswordTextField.text! != (passwordTextField.text!) {
+            if confirmPasswordTextField.text! != (passwordTextField.text!) && !(passwordTextField.text?.isEmpty)! {
                 let alert = UIAlertController(title: "Information", message: "Password not match", preferredStyle: .alert)
                 let ok = UIAlertAction(title: "Ok", style: .default, handler: nil)
                 let cancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
@@ -217,6 +184,7 @@ extension RegistrationVC : UITextFieldDelegate {
                 self.present(alert, animated: true, completion: nil)
             }
             break
+            
         default:
             print("Wrong Typed")
             break

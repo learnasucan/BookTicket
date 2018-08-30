@@ -24,13 +24,13 @@ class HomeVC: UIViewController {
     
     @IBAction func tapOnTicket(_ sender: UIButton) {
         
-        performSegue(withIdentifier: "BookTicketVC", sender: self)
+//        performSegue(withIdentifier: "BookTicketVC", sender: self)
     }
     
     
     @IBAction func tapOnHistory(_ sender: UIButton) {
         
-        performSegue(withIdentifier: "BookHistoryVC", sender: self)
+//        performSegue(withIdentifier: "BookHistoryVC", sender: self)
     }
     
     

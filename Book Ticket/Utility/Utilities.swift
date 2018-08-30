@@ -61,11 +61,135 @@ class Utilities: NSObject {
         VC.present(alertController, animated: true)
     }
     
+    // MARK: Alert without Button Action
+    //----------------------------------------
+    
+    class func alertWithoutButtonAction(alertTitle : String, alertMessage message: String, messageOnButton buttonText: String, passViewController VC: UIViewController)
+    {
+        let alert = UIAlertController(title: alertTitle, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: buttonText, style: UIAlertActionStyle.default, handler: nil))
+        VC.present(alert, animated: true, completion: nil)
+    }
+    
     //  Get Context for core data
     
     class func getContext () -> NSManagedObjectContext {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.persistentContainer.viewContext
+    }
+    
+    /*
+     class func presentToolBarPicker(for done:@escaping () -> (), to cancel:String){
+     //ToolBar
+     
+     let toolBar : UIToolbar = {
+     let toolbar = UIToolbar();
+     toolbar.sizeToFit()
+     
+     let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(done));
+     let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+     let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
+     
+     toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
+     
+     return toolbar
+     } ()
+     }
+     
+     */
+    
+    //MARK: Name Validation
+    
+    class func nameValidation (textField:UITextField , view: UIViewController) {
+        let name_reg = "[A-Za-z0-9]{5,20}"
+        
+        let name_test = NSPredicate(format: "SELF MATCHES %@", name_reg)
+        
+        if name_test.evaluate(with: textField.text) == false
+        {
+            let alert = UIAlertController(title: "Information", message: "Enter the name in range from 5 to 20", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "Ok", style: .default, handler: nil)
+            let cancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+            
+            alert.addAction(ok)
+            alert.addAction(cancel)
+            
+            view.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    //MARK: PICODE Validation
+    
+    class func pinCodeValidation(textField:UITextField , view: UIViewController) {
+        let pin_reg = "[0-9]{6}"
+        
+        let pin_test = NSPredicate(format: "SELF MATCHES %@", pin_reg)
+        
+        if pin_test.evaluate(with: textField.text) == false
+        {
+            let alert = UIAlertController(title: "Information", message: "Enter 6 digit pincode", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "Ok", style: .default, handler: nil)
+            let cancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+            
+            alert.addAction(ok)
+            alert.addAction(cancel)
+            
+            view.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    //MARK: Mobile Validation
+    
+    class func mobileValidation (textField:UITextField , view: UIViewController) {
+        let mobile_reg = "[0-9]{10}"
+        
+        let mobile_test = NSPredicate(format: "SELF MATCHES %@", mobile_reg)
+        
+        if mobile_test.evaluate(with: textField.text) == false
+        {
+            let alert = UIAlertController(title: "Information", message: "Enter your number in correct format", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "Ok", style: .default, handler: nil)
+            let cancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+            
+            alert.addAction(ok)
+            alert.addAction(cancel)
+            
+            view.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    //MARK: Email Validation
+    
+    class func emailValidation (textField:UITextField , view: UIViewController) {
+        
+        let email_reg = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        
+        let email_test = NSPredicate(format: "SELF MATCHES %@", email_reg)
+        
+        if email_test.evaluate(with: textField.text) == false
+        {
+            let alert = UIAlertController(title: "Information", message: "Please enter valid email id.", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "Ok", style: .default, handler: nil)
+            let cancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+            
+            alert.addAction(ok)
+            alert.addAction(cancel)
+            
+            view.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    //MARK: Empty Field
+    
+    class func emptyFieldValidate (textField:UITextField , view: UIViewController) {
+        
+        guard let theText = textField.text, !theText.isEmpty else {
+            // theText is empty
+            alertWithoutButtonAction(alertTitle: "Alert", alertMessage: "Please Enter Somethimg", messageOnButton: "Ok", passViewController: view)
+            return // or throw
+        }
+        
+        
     }
     
     
@@ -76,12 +200,7 @@ class Utilities: NSObject {
     
     
     
-    
-    
-    
-    
-    
-//
+    //
 }
 
 //MARK:UserDefaults
@@ -163,6 +282,6 @@ extension UserDefaults{
         return UserDefaultsKeys.userPin.rawValue
     }
     
- 
- 
+    
+    
 }
