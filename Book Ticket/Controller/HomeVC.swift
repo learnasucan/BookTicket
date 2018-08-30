@@ -10,6 +10,30 @@ import UIKit
 
 class HomeVC: UIViewController {
 
+    //---------------------------
+    //MARK:IBOutlets and Variables
+    //----------------------------
+    
+    @IBOutlet weak var bookTicketButton: UIButton!
+    
+    @IBOutlet weak var bookHistoryButton: UIButton!
+    
+    //---------------------------
+    //MARK:Button Actions
+    //----------------------------
+    
+    @IBAction func tapOnTicket(_ sender: UIButton) {
+        
+//        performSegue(withIdentifier: "BookTicketVC", sender: self)
+    }
+    
+    
+    @IBAction func tapOnHistory(_ sender: UIButton) {
+        
+//        performSegue(withIdentifier: "BookHistoryVC", sender: self)
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
