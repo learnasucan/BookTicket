@@ -192,7 +192,23 @@ class Utilities: NSObject {
         
     }
     
+    //generate random alpha numberic string
+    class func randomAlphaNumericString(length: Int = 10) -> String {
+        let base = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        var randomString: String = ""
+        
+        for _ in 0..<length {
+            let randomValue = arc4random_uniform(UInt32(base.count))
+            randomString += "\(base[base.index(base.startIndex, offsetBy: Int(randomValue))])"
+        }
+        return randomString
+        
+        //let randomString = String.randomAlphaNumericString()
+    }
     
+    
+    
+
     
     
     
@@ -285,3 +301,21 @@ extension UserDefaults{
     
     
 }
+
+extension Date{
+    
+    func getDateString() -> String {
+        return self.getDateString(withFormat: "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
+    }
+    
+    func getDateString(withFormat format:String) -> String{
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        return formatter.string(from: self)
+        
+    }
+    
+}
+
+// message.created_at = Date().getDateString()

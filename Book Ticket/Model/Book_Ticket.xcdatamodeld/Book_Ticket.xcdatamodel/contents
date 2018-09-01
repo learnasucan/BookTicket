@@ -6,8 +6,8 @@
         <attribute name="fromDestination" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="passangerName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="toDestination" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="uniqueTicketNumber" optional="YES" attributeType="Integer 16" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="customerDetails" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Customer" syncable="YES"/>
+        <attribute name="uniqueTicketNumber" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="customers" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Customer" inverseName="tickets" inverseEntity="Customer" syncable="YES"/>
     </entity>
     <entity name="BookingDetails" representedClassName="BookingDetails" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -22,10 +22,11 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="pincode" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="tickets" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BookedTickets" inverseName="customers" inverseEntity="BookedTickets" syncable="YES"/>
     </entity>
     <elements>
+        <element name="BookedTickets" positionX="223" positionY="-18" width="128" height="150"/>
         <element name="BookingDetails" positionX="-63" positionY="27" width="128" height="105"/>
-        <element name="Customer" positionX="-63" positionY="-18" width="128" height="135"/>
-        <element name="BookedTickets" positionX="-36" positionY="54" width="128" height="150"/>
+        <element name="Customer" positionX="-63" positionY="-18" width="128" height="150"/>
     </elements>
 </model>

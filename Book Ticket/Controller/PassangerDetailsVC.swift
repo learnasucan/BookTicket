@@ -22,13 +22,25 @@ class PassangerDetailsVC: UIViewController {
     var bookingDate: String?
     var from: String?
     var to: String?
-    var passangers:Int?
-    
-    
+    var passangers:Int? // It decides number of cells
+    var ticketId:String = ""
+    var CollectionOfCell = [PassangerDetailsVCCell]()
+    var names = [String]()
+    var age = [String]()
     
    
     @IBAction func tapOnSaveDetails(_ sender: UIButton) {
+        //TODO:
         
+        CollectionOfCell.forEach { cell in
+            names.append(cell.nameTextField.text!)
+            age.append(cell.ageTextField.text!)
+        }
+        
+        defer {
+            print(names)
+            print(age)
+        }
         
     }
     
@@ -38,6 +50,9 @@ class PassangerDetailsVC: UIViewController {
         // Do any additional setup after loading the view.
         tableView.delegate = self
         tableView.dataSource = self
+        
+        //Set navigation name
+        self.navigationItem.title = "Passanger Details"
     }
 
     override func didReceiveMemoryWarning() {
@@ -68,6 +83,8 @@ extension PassangerDetailsVC: UITableViewDelegate, UITableViewDataSource {
         let rowIndex:Int = indexPath.row + 1
         let cell = tableView.dequeueReusableCell(withIdentifier: "PassangerDetailsVCCell", for: indexPath) as! PassangerDetailsVCCell
         cell.rowCount.text! = String(rowIndex)
+        
+        CollectionOfCell.append(cell)
         return cell
     }
     

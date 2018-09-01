@@ -37,6 +37,9 @@ class HomeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //Set navigation name
+        self.navigationItem.title = "Home"
+        
         // Do any additional setup after loading the view.
     }
 

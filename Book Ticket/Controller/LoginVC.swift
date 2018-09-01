@@ -32,6 +32,10 @@ class LoginVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Set navigation name
+        self.navigationItem.title = "Login"
+        
         usenameTextField.delegate = self
         passwordTextField.delegate = self
         

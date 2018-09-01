@@ -41,7 +41,7 @@ class RegistrationVC: UIViewController {
                                           "password":passwordTextField.text!]
 
         
-        let dict:RegistrationModel = parameters.toModel()
+        let dict: RegistrationModel = parameters.toModel()
         print(dict)
         
             
@@ -56,6 +56,7 @@ class RegistrationVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.title = "Registration"
         //TextField Validation
         emailTextField.delegate = self
         nameTextField.delegate = self

@@ -9,12 +9,10 @@
 import UIKit
 
 struct RegistrationModel: Codable {
-    let name: String
+    let name: String?
     let address: String?
     let pincode: String?
     let mobile: String?
     let email: String?
     let password: String?
-    
-    
 }

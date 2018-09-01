@@ -69,10 +69,8 @@ class BookTicketVC: UIViewController{
         // Input data into the Array:
         cities = ["Mumbai","Pune","Delhi","Jaipur","Navi Mumbai","AMD","Noida"]
         
-//        self.pickerView.delegate = self
-//        self.pickerView.dataSource = self
-       
-       // show picker view when text field clicked
+        //Set navigation name
+        self.navigationItem.title = "Booking"
         
       
     }

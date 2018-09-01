@@ -14,6 +14,7 @@
 		3555A1662135783E00C46B41 /* CoreDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3555A1652135783E00C46B41 /* CoreDataHandler.swift */; };
 		3555A16821359B7D00C46B41 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3555A16721359B7D00C46B41 /* Constants.swift */; };
 		35ED67642138110D001CCFEB /* RegistrationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ED67632138110D001CCFEB /* RegistrationModel.swift */; };
+		35ED6766213A773A001CCFEB /* BookDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ED6765213A773A001CCFEB /* BookDetailsModel.swift */; };
 		35F1C24721344A5E000DB590 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F1C24621344A5E000DB590 /* AppDelegate.swift */; };
 		35F1C24C21344A5E000DB590 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35F1C24A21344A5E000DB590 /* Main.storyboard */; };
 		35F1C24F21344A5E000DB590 /* Book_Ticket.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 35F1C24D21344A5E000DB590 /* Book_Ticket.xcdatamodeld */; };
@@ -55,6 +56,7 @@
 		3555A1652135783E00C46B41 /* CoreDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHandler.swift; sourceTree = "<group>"; };
 		3555A16721359B7D00C46B41 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		35ED67632138110D001CCFEB /* RegistrationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationModel.swift; sourceTree = "<group>"; };
+		35ED6765213A773A001CCFEB /* BookDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailsModel.swift; sourceTree = "<group>"; };
 		35F1C24321344A5E000DB590 /* Book Ticket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Book Ticket.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		35F1C24621344A5E000DB590 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		35F1C24B21344A5E000DB590 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 			children = (
 				35F1C24D21344A5E000DB590 /* Book_Ticket.xcdatamodeld */,
 				35ED67632138110D001CCFEB /* RegistrationModel.swift */,
+				35ED6765213A773A001CCFEB /* BookDetailsModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 				3555A1662135783E00C46B41 /* CoreDataHandler.swift in Sources */,
 				35ED67642138110D001CCFEB /* RegistrationModel.swift in Sources */,
 				35F1C24F21344A5E000DB590 /* Book_Ticket.xcdatamodeld in Sources */,
+				35ED6766213A773A001CCFEB /* BookDetailsModel.swift in Sources */,
 				3555A1642135768C00C46B41 /* Utilities.swift in Sources */,
 				18FD9D1D213729CD005EAD05 /* PassangerDetailsVC.swift in Sources */,
 				35F1C27F213459A7000DB590 /* HomeVC.swift in Sources */,
