@@ -435,7 +435,7 @@
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </view>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PassangerDetailsVCCell" id="bP0-el-cof" customClass="PassangerDetailsVCCell" customModule="Book_Ticket" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="PassangerDetailsVCCell" id="bP0-el-cof" customClass="PassangerDetailsVCCell" customModule="Book_Ticket" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bP0-el-cof" id="mL0-9Y-0NC">
@@ -467,7 +467,7 @@
                                                                     <rect key="frame" x="248" y="0.0" width="97" height="22"/>
                                                                     <nil key="textColor"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                    <textInputTraits key="textInputTraits"/>
+                                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
                                                                 </textField>
                                                             </subviews>
                                                         </stackView>
@@ -495,6 +495,7 @@
                                         </state>
                                         <connections>
                                             <action selector="tapOnSaveDetails:" destination="KI9-ep-Yib" eventType="touchUpInside" id="jr0-nx-nuF"/>
+                                            <segue destination="CCq-k8-7cm" kind="show" identifier="FlightVC" id="g94-es-J72"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -527,6 +528,141 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="an6-x7-lig" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3468" y="745.27736131934034"/>
+        </scene>
+        <!--FlightVC-->
+        <scene sceneID="Ols-Wl-QLB">
+            <objects>
+                <viewController id="CCq-k8-7cm" customClass="FlightVC" customModule="Book_Ticket" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IJW-NT-Cgo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CWd-2W-Rta">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Flights Available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wfl-P4-D83">
+                                        <rect key="frame" x="51" y="303" width="274" height="41"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="30"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ca6-X1-INb">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <view key="tableFooterView" contentMode="scaleToFill" id="7eq-uq-1cL">
+                                            <rect key="frame" x="0.0" y="136" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </view>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FlightVCCell" rowHeight="108" id="GwZ-nE-MPF" customClass="FlightVCCell" customModule="Book_Ticket" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="375" height="108"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GwZ-nE-MPF" id="Wty-23-pZd">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="107.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ku-W1-qTt">
+                                                            <rect key="frame" x="20" y="8" width="335" height="91.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="4Ku-W1-qTt" secondAttribute="trailing" constant="20" id="OuG-eS-fdm"/>
+                                                        <constraint firstAttribute="bottom" secondItem="4Ku-W1-qTt" secondAttribute="bottom" constant="8" id="ei3-rf-2lq"/>
+                                                        <constraint firstItem="4Ku-W1-qTt" firstAttribute="leading" secondItem="Wty-23-pZd" secondAttribute="leading" constant="20" id="gWJ-cN-LaN"/>
+                                                        <constraint firstItem="4Ku-W1-qTt" firstAttribute="top" secondItem="Wty-23-pZd" secondAttribute="top" constant="8" id="upd-oM-qy6"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="labelFlights" destination="4Ku-W1-qTt" id="j8P-ld-E85"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Wfl-P4-D83" firstAttribute="centerY" secondItem="CWd-2W-Rta" secondAttribute="centerY" id="6Lt-Ic-ROh"/>
+                                    <constraint firstItem="Wfl-P4-D83" firstAttribute="centerX" secondItem="CWd-2W-Rta" secondAttribute="centerX" id="pPO-9k-N9u"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="CWd-2W-Rta" firstAttribute="top" secondItem="8ns-4x-enU" secondAttribute="top" id="CJA-LY-ngC"/>
+                            <constraint firstItem="CWd-2W-Rta" firstAttribute="bottom" secondItem="8ns-4x-enU" secondAttribute="bottom" id="egw-kt-ieN"/>
+                            <constraint firstItem="CWd-2W-Rta" firstAttribute="leading" secondItem="8ns-4x-enU" secondAttribute="leading" id="g8h-We-fmm"/>
+                            <constraint firstItem="CWd-2W-Rta" firstAttribute="trailing" secondItem="8ns-4x-enU" secondAttribute="trailing" id="yyy-dy-mav"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="8ns-4x-enU"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="ca6-X1-INb" id="86f-2D-35Q"/>
+                        <segue destination="OwN-rl-iDH" kind="show" identifier="TicketDetailsVC" id="uUv-mQ-nZ1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v2I-XB-iRx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4253.6000000000004" y="742.5787106446777"/>
+        </scene>
+        <!--Ticket DetailsVC-->
+        <scene sceneID="uug-7x-ce1">
+            <objects>
+                <viewController id="OwN-rl-iDH" customClass="TicketDetailsVC" customModule="Book_Ticket" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XLF-yP-gkh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mdd-Hy-oVp">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="User Details" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cnj-qU-Ghg">
+                                        <rect key="frame" x="20" y="20" width="335" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Passanger details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oe2-7D-cVO">
+                                        <rect key="frame" x="20" y="60.5" width="335" height="566.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="cnj-qU-Ghg" secondAttribute="trailing" constant="20" id="0Oh-aK-BFL"/>
+                                    <constraint firstItem="cnj-qU-Ghg" firstAttribute="leading" secondItem="Mdd-Hy-oVp" secondAttribute="leading" constant="20" id="9ay-ij-SAb"/>
+                                    <constraint firstItem="cnj-qU-Ghg" firstAttribute="top" secondItem="Mdd-Hy-oVp" secondAttribute="top" constant="20" id="BXp-hy-ni9"/>
+                                    <constraint firstAttribute="trailing" secondItem="oe2-7D-cVO" secondAttribute="trailing" constant="20" id="Cbz-bq-0OU"/>
+                                    <constraint firstItem="oe2-7D-cVO" firstAttribute="top" secondItem="cnj-qU-Ghg" secondAttribute="bottom" constant="20" id="VZg-zV-CMP"/>
+                                    <constraint firstItem="cnj-qU-Ghg" firstAttribute="centerX" secondItem="Mdd-Hy-oVp" secondAttribute="centerX" id="f6R-uO-XsT"/>
+                                    <constraint firstItem="oe2-7D-cVO" firstAttribute="leading" secondItem="Mdd-Hy-oVp" secondAttribute="leading" constant="20" id="hOS-PV-Tjg"/>
+                                    <constraint firstAttribute="bottom" secondItem="oe2-7D-cVO" secondAttribute="bottom" constant="20" id="pF4-tP-5YZ"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Mdd-Hy-oVp" firstAttribute="bottom" secondItem="W4Z-O4-oeZ" secondAttribute="bottom" id="E6G-wQ-UR5"/>
+                            <constraint firstItem="Mdd-Hy-oVp" firstAttribute="leading" secondItem="W4Z-O4-oeZ" secondAttribute="leading" id="OAJ-Fl-UTh"/>
+                            <constraint firstItem="Mdd-Hy-oVp" firstAttribute="trailing" secondItem="W4Z-O4-oeZ" secondAttribute="trailing" id="cIT-hF-Gg4"/>
+                            <constraint firstItem="Mdd-Hy-oVp" firstAttribute="top" secondItem="W4Z-O4-oeZ" secondAttribute="top" id="jEG-qw-a2o"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="W4Z-O4-oeZ"/>
+                    </view>
+                    <connections>
+                        <outlet property="ticketDetailsLabel" destination="cnj-qU-Ghg" id="qtP-Xy-Jkn"/>
+                        <outlet property="userDetailsLabel" destination="oe2-7D-cVO" id="dSL-Xb-Omw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l2W-lE-YmN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5012" y="742.5787106446777"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9gc-u2-sEy">

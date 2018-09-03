@@ -57,12 +57,13 @@ class BookTicketVC: UIViewController{
     //MARK:Button Actions
     
     @IBAction func tapOnSave(_ sender: UIButton) {
-//        performSegue(withIdentifier: "PassangerDetailsVC", sender: self)
+        //        performSegue(withIdentifier: "PassangerDetailsVC", sender: self)
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         showDatePicker()
         createPicker()
         
@@ -72,25 +73,25 @@ class BookTicketVC: UIViewController{
         //Set navigation name
         self.navigationItem.title = "Booking"
         
-      
+        
     }
     
     func showDatePicker(){
         //Formate Date
         
         datePicker.datePickerMode = .date
-       /*
-        //ToolBar
-        
-        let toolbar = UIToolbar();
-        toolbar.sizeToFit()
-        
-        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneDatePicker));
-        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
-        
-        toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
-        */
+        /*
+         //ToolBar
+         
+         let toolbar = UIToolbar();
+         toolbar.sizeToFit()
+         
+         let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneDatePicker));
+         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+         let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
+         
+         toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
+         */
         inputTextField.inputAccessoryView = dateToolBar
         inputTextField.inputView = datePicker
         
@@ -101,7 +102,7 @@ class BookTicketVC: UIViewController{
         let picker = UIPickerView()
         picker.delegate = self
         
-//        picker.dataSource = self
+        //        picker.dataSource = self
         
         self.fromTextField!.inputView = picker
         self.ToTextField!.inputView = picker
@@ -122,8 +123,8 @@ class BookTicketVC: UIViewController{
     
     @objc func donePicker(){
         
-       
-//        fromTextField.text = pickerView
+        
+        //        fromTextField.text = pickerView
         self.view.endEditing(true)
     }
     
@@ -138,12 +139,12 @@ class BookTicketVC: UIViewController{
     
     
     
-     // MARK: - Navigation
-     
+    // MARK: - Navigation
     
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
         
         if segue.destination is PassangerDetailsVC {
             let vc = segue.destination as? PassangerDetailsVC
@@ -152,8 +153,8 @@ class BookTicketVC: UIViewController{
             vc?.to = self.ToTextField.text
             vc?.passangers = Int(self.numerPassangerTextField.text!) ?? 0
         }
-     }
- 
+    }
+    
     
 }
 
@@ -174,25 +175,25 @@ extension BookTicketVC : UIPickerViewDelegate,UIPickerViewDataSource {
     // The data to return for the row and component (column) that's being passed in
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
-//        fromTextField.isSelected ?
-//        if fromTextField.isSelected {
-            return cities[row]
-//        } else {
-//            ToTextField.text! =
-//            return cities[row]
-//        }
+        //        fromTextField.isSelected ?
+        //        if fromTextField.isSelected {
+        return cities[row]
+        //        } else {
+        //            ToTextField.text! =
+        //            return cities[row]
+        //        }
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-
-         self.selectedCity =  cities[row]
+        
+        self.selectedCity =  cities[row]
         
         if ToTextField.isFirstResponder {
-           
+            
             self.ToTextField.text = selectedCity
             
         } else {
-           
+            
             self.fromTextField.text = selectedCity
         }
         
@@ -200,3 +201,61 @@ extension BookTicketVC : UIPickerViewDelegate,UIPickerViewDataSource {
     
 }
 
+
+extension BookTicketVC: UITextFieldDelegate{
+    
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
+        
+        switch textField {
+        case inputTextField:
+            Utilities.emptyFieldValidate(textField: inputTextField, view: self)
+            break
+            
+        case fromTextField:
+            Utilities.emptyFieldValidate(textField: fromTextField, view: self)
+            break
+            
+        case ToTextField:
+            Utilities.emptyFieldValidate(textField: ToTextField, view: self)
+            break
+        case numerPassangerTextField:
+            Utilities.emptyFieldValidate(textField: numerPassangerTextField, view: self)
+            break
+            
+        default:
+            print("Wrong Typed")
+            break
+        }
+    }
+    
+    //    func setupAddTargetIsNotEmptyTextFields() {
+    //        self.saveButton.isEnabled = false //hidden okButton
+    //        inputTextField.addTarget(self, action: #selector(textFieldsIsNotEmpty),
+    //                                   for: .editingChanged)
+    //        fromTextField.addTarget(self, action: #selector(textFieldsIsNotEmpty),
+    //                                    for: .editingChanged)
+    //        ToTextField.addTarget(self, action: #selector(textFieldsIsNotEmpty),
+    //                                for: .editingChanged)
+    //        numerPassangerTextField.addTarget(self, action: #selector(textFieldsIsNotEmpty),
+    //                                for: .editingChanged)
+    //        
+    //        
+    //    }
+    //    
+    //    @objc func textFieldsIsNotEmpty(sender: UITextField) {
+    //        
+    //        sender.text = sender.text?.trimmingCharacters(in: .whitespaces)
+    //        
+    //        guard
+    //            let bookDate = inputTextField.text, !bookDate.isEmpty,
+    //            let from = fromTextField.text, !from.isEmpty,  let to = ToTextField.text, !to.isEmpty,
+    //            let passanger = numerPassangerTextField.text, !passanger.isEmpty
+    //            else {
+    //                self.saveButton.isEnabled = false
+    //                Utilities.alertWithoutButtonAction(alertTitle: "Alert", alertMessage: "Please Fill All Fields", messageOnButton: "Ok", passViewController: self)
+    //                return
+    //        }
+    //        // enable okButton if all conditions are met
+    //        saveButton.isEnabled = true
+    //    }
+}

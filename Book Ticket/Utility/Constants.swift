@@ -6,6 +6,9 @@
 //  Copyright © 2018 SOLUTIONPLANETS. All rights reserved.
 //
 
-import Foundation
-
+import UIKit
+import CoreData
 //typealias Picker = UIPickerViewDelegate & UIPickerViewDataSource
+
+
+let appDelegate = UIApplication.shared.delegate as? AppDelegate
