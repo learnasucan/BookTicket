@@ -92,10 +92,7 @@ class PassangerDetailsVC: UIViewController {
         
         let namesArrayAsString: String = names.description
         let agesArrayAsString: String = age.description
-        
-        //retrival
-        //let stringAsData = arrayAsString.data(using: String.Encoding.utf16)
-        //let arrayBack: [String] = try! JSONDecoder().decode([String].self, from: stringAsData!)
+        timeStamp = Utilities.getCurrentTimeStamp()
         
         ticket.passangerName = namesArrayAsString
         
@@ -105,6 +102,8 @@ class PassangerDetailsVC: UIViewController {
         ticket.fromDestination = from!
         ticket.toDestination = to!
         ticket.uniqueTicketNumber = String.random()
+        ticket.timeStamp = timeStamp
+        
         
         do {
             try  managedContext.save()

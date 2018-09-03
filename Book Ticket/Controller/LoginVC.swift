@@ -20,6 +20,7 @@ class LoginVC: UIViewController {
     
     @IBAction func tapOnSubmit(_ sender: UIButton) {
         
+        //guard let
         getData()
         
         
@@ -39,7 +40,7 @@ class LoginVC: UIViewController {
         usenameTextField.delegate = self
         passwordTextField.delegate = self
         
-//        setupAddTargetIsNotEmptyTextFields()
+        //        setupAddTargetIsNotEmptyTextFields()
         // Do any additional setup after loading the view.
     }
     
@@ -83,8 +84,10 @@ class LoginVC: UIViewController {
         
         userFetch.fetchLimit = 1
         userFetch.predicate = NSPredicate(format: "name == %@", usenameTextField.text!)
+        print(userFetch.fetchBatchSize)
         
         do {
+            
             if let user = try Utilities.getContext().fetch(userFetch)[0] as? Customer {
                 
                 if user.name ==  self.usenameTextField.text && user.password == self.passwordTextField.text {
@@ -101,63 +104,67 @@ class LoginVC: UIViewController {
                         performSegue(withIdentifier: "HomeVC", sender: self)
                     }
                     
+                } else {
+                    Utilities.alertWithoutButtonAction(alertTitle: "Alert", alertMessage: "User is not Present", messageOnButton: "Ok", passViewController: self)
                 }
+                
             }
-            
-        } catch let error as NSError {
-            print("Error: \(error.localizedDescription)")
-        }
+         //
         
+    } catch let error as NSError {
+    print("Error: \(error.localizedDescription)")
     }
     
-    
-    
-    
+}
+
+
+
+
 }
 
 extension LoginVC: UITextFieldDelegate{
     
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
-
+        
         switch textField {
         case usenameTextField:
             Utilities.nameValidation(textField: usenameTextField, view: self)
             break
-
+            
         case passwordTextField:
             Utilities.emptyFieldValidate(textField: passwordTextField, view: self)
             break
-
+            
         default:
             print("Wrong Typed")
             break
         }
     }
-
-//    func setupAddTargetIsNotEmptyTextFields() {
-//        self.submitButton.isEnabled = false //hidden okButton
-//        usenameTextField.addTarget(self, action: #selector(textFieldsIsNotEmpty),
-//                                   for: .editingChanged)
-//        passwordTextField.addTarget(self, action: #selector(textFieldsIsNotEmpty),
-//                                    for: .editingChanged)
-//
-//    }
-//
-//    @objc func textFieldsIsNotEmpty(sender: UITextField) {
-//
-//        sender.text = sender.text?.trimmingCharacters(in: .whitespaces)
-//
-//        guard
-//            let name = usenameTextField.text, !name.isEmpty,
-//            let password = passwordTextField.text, !password.isEmpty
-//            else {
-//                self.submitButton.isEnabled = false
-////                Utilities.alertWithoutButtonAction(alertTitle: "Alert", alertMessage: "Please Fill All Fields", messageOnButton: "Ok", passViewController: self)
-//                return
-//        }
-//        // enable okButton if all conditions are met
-//        submitButton.isEnabled = true
-//    }
+    
+    //    func setupAddTargetIsNotEmptyTextFields() {
+    //        self.submitButton.isEnabled = false //hidden okButton
+    //        usenameTextField.addTarget(self, action: #selector(textFieldsIsNotEmpty),
+    //                                   for: .editingChanged)
+    //        passwordTextField.addTarget(self, action: #selector(textFieldsIsNotEmpty),
+    //                                    for: .editingChanged)
+    //
+    //    }
+    //
+    //    @objc func textFieldsIsNotEmpty(sender: UITextField) {
+    //
+    //        sender.text = sender.text?.trimmingCharacters(in: .whitespaces)
+    //
+    //        guard
+    //            let name = usenameTextField.text, !name.isEmpty,
+    //            let password = passwordTextField.text, !password.isEmpty
+    //            else {
+    //                self.submitButton.isEnabled = false
+    ////                Utilities.alertWithoutButtonAction(alertTitle: "Alert", alertMessage: "Please Fill All Fields", messageOnButton: "Ok", passViewController: self)
+    //                return
+    //        }
+    //        // enable okButton if all conditions are met
+    //        submitButton.isEnabled = true
+    //    }
     
     
 }

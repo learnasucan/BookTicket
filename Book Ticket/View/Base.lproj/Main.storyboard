@@ -626,7 +626,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Passanger details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oe2-7D-cVO">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Passanger details" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oe2-7D-cVO">
                                         <rect key="frame" x="20" y="60.5" width="335" height="566.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -656,8 +656,8 @@
                         <viewLayoutGuide key="safeArea" id="W4Z-O4-oeZ"/>
                     </view>
                     <connections>
-                        <outlet property="ticketDetailsLabel" destination="cnj-qU-Ghg" id="qtP-Xy-Jkn"/>
-                        <outlet property="userDetailsLabel" destination="oe2-7D-cVO" id="dSL-Xb-Omw"/>
+                        <outlet property="ticketDetailsLabel" destination="oe2-7D-cVO" id="7hA-65-HEs"/>
+                        <outlet property="userDetailsLabel" destination="cnj-qU-Ghg" id="MOX-lR-ZbS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l2W-lE-YmN" userLabel="First Responder" sceneMemberID="firstResponder"/>

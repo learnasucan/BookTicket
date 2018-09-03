@@ -16,10 +16,11 @@ class TicketDetailsVC: UIViewController {
     @IBOutlet weak var userDetailsLabel: UILabel!
     
     var ticketsNew: [BookedTickets] = []
+    var users: [Customer] = []
     var myFlight: String?
-    var nameArray: [String] = []
-    var ageArray: [String] = []
-    
+    var nameArray: [[String]] = []
+    var ageArray: [[String]] = []
+    var details : String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,18 +41,48 @@ class TicketDetailsVC: UIViewController {
                 if ticketsNew.count >= 1 {
                     //tableView.isHidden = false
                     print(ticketsNew)
-                    let names = ticketsNew[0].passangerName
-                    let nameStringAsData = names?.data(using: String.Encoding.utf16)
-                    nameArray = try! JSONDecoder().decode([String].self, from: nameStringAsData!)
+                    var test = users[0]
+                    print(test)
+                    
+                    var j = 0
+                    if j < ticketsNew.count {
+                        let names = ticketsNew[j].passangerName
+                        let nameStringAsData = names?.data(using: String.Encoding.utf16)
+                        let nameS = try! JSONDecoder().decode([String].self, from: nameStringAsData!)
+                        nameArray.append(nameS)
+                        
+                        let ages = ticketsNew[j].age
+                        let ageStringAsData = ages?.data(using: String.Encoding.utf16)
+                        let ageS = try! JSONDecoder().decode([String].self, from: ageStringAsData!)
+                        ageArray.append(ageS)
+                        j = j + 1
+                    } else {return}
+                    
+                  
                     print(nameArray)
                     
-                    let ages = ticketsNew[0].age
-                    let ageStringAsData = ages?.data(using: String.Encoding.utf16)
-                    ageArray = try! JSONDecoder().decode([String].self, from: ageStringAsData!)
+                   
                     print(ageArray)
                     
                     userDetailsLabel.text! = "\(UserDefaults.standard.getUserName())\t\(UserDefaults.standard.getUserMobile())\t\(UserDefaults.standard.getUserEmail())"
-                    ticketDetailsLabel.text! = ""
+                    
+                   // for (age,name) in ( ageArray,nameArray) {
+                        
+                    //}
+                    var i = 0
+                    print(nameArray.count)
+                    print(nameArray[0].count)
+                    if i < nameArray[0].count {
+                        details = details + "Name: \(nameArray[i][0])\t Age\(ageArray[i][0])"
+                        print(details)
+                        i = i + 1
+                    } else {return}
+                    
+                    
+                   // for i in nameArray.count {
+                      //
+                   // }
+                        ticketDetailsLabel.text! = details
                     
                 } else {
                     //tableView.isHidden = true
@@ -63,10 +94,12 @@ class TicketDetailsVC: UIViewController {
     func fetch(completion: (_ complete : Bool) -> ()) {
         guard let managedContext = appDelegate?.persistentContainer.viewContext else { return }
         
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "BookedTickets")
+        let fetchRequest1 = NSFetchRequest<NSFetchRequestResult>(entityName: "Customer")
+        let fetchRequest2 = NSFetchRequest<NSFetchRequestResult>(entityName: "BookedTickets")
         
         do {
-            ticketsNew = try managedContext.fetch(fetchRequest) as! [BookedTickets]
+            users = try managedContext.fetch(fetchRequest1) as! [Customer]
+            ticketsNew = try managedContext.fetch(fetchRequest2) as! [BookedTickets]
             print("Succesfully Fetched")
             completion(true)
         } catch  {

@@ -5,8 +5,10 @@
         <attribute name="dateOfJourney" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="fromDestination" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="passangerName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="timeStamp" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="toDestination" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="uniqueTicketNumber" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="customer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Customer" inverseName="tickets" inverseEntity="Customer" syncable="YES"/>
     </entity>
     <entity name="BookingDetails" representedClassName="BookingDetails" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -21,10 +23,11 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="pincode" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="tickets" toMany="YES" deletionRule="Nullify" destinationEntity="BookedTickets" inverseName="customer" inverseEntity="BookedTickets" syncable="YES"/>
     </entity>
     <elements>
-        <element name="BookedTickets" positionX="223" positionY="-18" width="128" height="135"/>
+        <element name="BookedTickets" positionX="223" positionY="-18" width="128" height="165"/>
         <element name="BookingDetails" positionX="-63" positionY="27" width="128" height="105"/>
-        <element name="Customer" positionX="-63" positionY="-18" width="128" height="133"/>
+        <element name="Customer" positionX="-63" positionY="-18" width="128" height="150"/>
     </elements>
 </model>
