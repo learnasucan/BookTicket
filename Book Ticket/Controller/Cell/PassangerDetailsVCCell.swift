@@ -20,9 +20,13 @@ class PassangerDetailsVCCell: UITableViewCell {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var ageTextField: UITextField!
     
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -31,8 +35,9 @@ class PassangerDetailsVCCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func details(){
-       
+    func configureCell(){
+        nameTextField.setBottomBorder(color: #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1))
+        ageTextField.setBottomBorder(color: #colorLiteral(red: 0.8862745098, green: 0.862745098, blue: 0.8196078431, alpha: 1))
     }
 
 }

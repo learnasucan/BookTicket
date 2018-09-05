@@ -2,10 +2,10 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14135" systemVersion="17G65" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="BookedTickets" representedClassName="BookedTickets" syncable="YES" codeGenerationType="class">
         <attribute name="age" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="created_at" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dateOfJourney" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="fromDestination" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="passangerName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="timeStamp" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="toDestination" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="uniqueTicketNumber" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="customer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Customer" inverseName="tickets" inverseEntity="Customer" syncable="YES"/>

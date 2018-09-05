@@ -19,14 +19,15 @@ class BookTicketVC: UIViewController{
     @IBOutlet weak var saveButton: UIButton!
     
     let datePicker = UIDatePicker()
-    
     var cities: [String] = [String] ()
     var selectedCity:String?
+    var components = DateComponents()
     
     //ToolBar
     
     let dateToolBar : UIToolbar = {
-        let toolbar = UIToolbar();
+        
+        let toolbar = UIToolbar()
         toolbar.sizeToFit()
         
         let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneDatePicker));
@@ -39,7 +40,8 @@ class BookTicketVC: UIViewController{
     } ()
     
     let pickerToolBar : UIToolbar = {
-        let toolbar = UIToolbar();
+        
+        let toolbar = UIToolbar()
         toolbar.sizeToFit()
         
         let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donePicker));
@@ -52,61 +54,54 @@ class BookTicketVC: UIViewController{
     } ()
     
     
-    
-    
     //MARK:Button Actions
     
     @IBAction func tapOnSave(_ sender: UIButton) {
         //        performSegue(withIdentifier: "PassangerDetailsVC", sender: self)
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        showDatePicker()
-        createPicker()
-        
-        // Input data into the Array:
-        cities = ["Mumbai","Pune","Delhi","Jaipur","Navi Mumbai","AMD","Noida"]
         
         //Set navigation name
         self.navigationItem.title = "Booking"
         
+        // Input data into the Array:
+        cities = ["Mumbai","Pune","Delhi","Jaipur","Navi Mumbai","AMD","Noida"]
         
+        showDatePicker()
+        createPicker()
+        setMinMaxDate()
+        
+    }
+    
+    func setMinMaxDate()  {
+        
+        components.year = 0
+        let minDate = Calendar.current.date(byAdding: components, to: Date())
+        
+        components.year = 2 // 2 years of booking
+        let maxDate = Calendar.current.date(byAdding: components, to: Date())
+        
+        datePicker.minimumDate = minDate
+        datePicker.maximumDate = maxDate
     }
     
     func showDatePicker(){
         //Formate Date
         
         datePicker.datePickerMode = .date
-        /*
-         //ToolBar
-         
-         let toolbar = UIToolbar();
-         toolbar.sizeToFit()
-         
-         let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneDatePicker));
-         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
-         let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
-         
-         toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
-         */
         inputTextField.inputAccessoryView = dateToolBar
         inputTextField.inputView = datePicker
-        
     }
     
-    
     func createPicker () {
+        
         let picker = UIPickerView()
         picker.delegate = self
         
-        //        picker.dataSource = self
-        
         self.fromTextField!.inputView = picker
         self.ToTextField!.inputView = picker
-        
         
         fromTextField.inputAccessoryView = pickerToolBar
         ToTextField.inputAccessoryView = pickerToolBar
@@ -122,9 +117,6 @@ class BookTicketVC: UIViewController{
     }
     
     @objc func donePicker(){
-        
-        
-        //        fromTextField.text = pickerView
         self.view.endEditing(true)
     }
     
@@ -132,16 +124,8 @@ class BookTicketVC: UIViewController{
         self.view.endEditing(true)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
-    
     // MARK: - Navigation
-    
-    
+ 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
@@ -154,7 +138,6 @@ class BookTicketVC: UIViewController{
             vc?.passangers = Int(self.numerPassangerTextField.text!) ?? 0
         }
     }
-    
     
 }
 
@@ -175,13 +158,7 @@ extension BookTicketVC : UIPickerViewDelegate,UIPickerViewDataSource {
     // The data to return for the row and component (column) that's being passed in
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
-        //        fromTextField.isSelected ?
-        //        if fromTextField.isSelected {
         return cities[row]
-        //        } else {
-        //            ToTextField.text! =
-        //            return cities[row]
-        //        }
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -189,11 +166,8 @@ extension BookTicketVC : UIPickerViewDelegate,UIPickerViewDataSource {
         self.selectedCity =  cities[row]
         
         if ToTextField.isFirstResponder {
-            
             self.ToTextField.text = selectedCity
-            
         } else {
-            
             self.fromTextField.text = selectedCity
         }
         

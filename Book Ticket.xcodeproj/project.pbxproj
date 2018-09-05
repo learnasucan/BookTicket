@@ -21,6 +21,9 @@
 		35ED6773213C27EC001CCFEB /* FlightVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ED6772213C27EC001CCFEB /* FlightVCCell.swift */; };
 		35ED6775213C56D8001CCFEB /* BookHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ED6774213C56D8001CCFEB /* BookHistoryVC.swift */; };
 		35ED6777213C6283001CCFEB /* TicketDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ED6776213C6283001CCFEB /* TicketDetailsVC.swift */; };
+		35ED6779213DBD1C001CCFEB /* BookHistoryVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ED6778213DBD1C001CCFEB /* BookHistoryVCCell.swift */; };
+		35ED677B213EC261001CCFEB /* ViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ED677A213EC261001CCFEB /* ViewExt.swift */; };
+		35ED677D213EC504001CCFEB /* TextFieldExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ED677C213EC504001CCFEB /* TextFieldExt.swift */; };
 		35F1C24721344A5E000DB590 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F1C24621344A5E000DB590 /* AppDelegate.swift */; };
 		35F1C24C21344A5E000DB590 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35F1C24A21344A5E000DB590 /* Main.storyboard */; };
 		35F1C24F21344A5E000DB590 /* Book_Ticket.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 35F1C24D21344A5E000DB590 /* Book_Ticket.xcdatamodeld */; };
@@ -69,6 +72,9 @@
 		35ED6772213C27EC001CCFEB /* FlightVCCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightVCCell.swift; sourceTree = "<group>"; };
 		35ED6774213C56D8001CCFEB /* BookHistoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookHistoryVC.swift; sourceTree = "<group>"; };
 		35ED6776213C6283001CCFEB /* TicketDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketDetailsVC.swift; sourceTree = "<group>"; };
+		35ED6778213DBD1C001CCFEB /* BookHistoryVCCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookHistoryVCCell.swift; sourceTree = "<group>"; };
+		35ED677A213EC261001CCFEB /* ViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExt.swift; sourceTree = "<group>"; };
+		35ED677C213EC504001CCFEB /* TextFieldExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldExt.swift; sourceTree = "<group>"; };
 		35F1C24321344A5E000DB590 /* Book Ticket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Book Ticket.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		35F1C24621344A5E000DB590 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		35F1C24B21344A5E000DB590 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -128,6 +134,7 @@
 			children = (
 				182078962137A461005B8793 /* PassangerDetailsVCCell.swift */,
 				35ED6772213C27EC001CCFEB /* FlightVCCell.swift */,
+				35ED6778213DBD1C001CCFEB /* BookHistoryVCCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -146,7 +153,9 @@
 			isa = PBXGroup;
 			children = (
 				35ED6768213B6900001CCFEB /* StringExt.swift */,
+				35ED677A213EC261001CCFEB /* ViewExt.swift */,
 				35ED676C213C09BC001CCFEB /* CoreDataArrObj.swift */,
+				35ED677C213EC504001CCFEB /* TextFieldExt.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -217,12 +226,12 @@
 		35F1C27821345903000DB590 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				35ED6774213C56D8001CCFEB /* BookHistoryVC.swift */,
 				182078952137A421005B8793 /* Cell */,
 				35F1C24621344A5E000DB590 /* AppDelegate.swift */,
 				35F1C27A21345966000DB590 /* RegistrationVC.swift */,
 				35F1C27C21345991000DB590 /* LoginVC.swift */,
 				35F1C27E213459A7000DB590 /* HomeVC.swift */,
+				35ED6774213C56D8001CCFEB /* BookHistoryVC.swift */,
 				35F1C280213459C9000DB590 /* BookTicketVC.swift */,
 				18FD9D1C213729CD005EAD05 /* PassangerDetailsVC.swift */,
 				35ED6770213C1DB6001CCFEB /* FlightVC.swift */,
@@ -478,6 +487,7 @@
 				35F1C24721344A5E000DB590 /* AppDelegate.swift in Sources */,
 				3555A1662135783E00C46B41 /* CoreDataHandler.swift in Sources */,
 				35ED6773213C27EC001CCFEB /* FlightVCCell.swift in Sources */,
+				35ED677B213EC261001CCFEB /* ViewExt.swift in Sources */,
 				35ED676D213C09BC001CCFEB /* CoreDataArrObj.swift in Sources */,
 				35ED67642138110D001CCFEB /* RegistrationModel.swift in Sources */,
 				35F1C24F21344A5E000DB590 /* Book_Ticket.xcdatamodeld in Sources */,
@@ -486,6 +496,8 @@
 				35ED6775213C56D8001CCFEB /* BookHistoryVC.swift in Sources */,
 				18FD9D1D213729CD005EAD05 /* PassangerDetailsVC.swift in Sources */,
 				35ED6771213C1DB6001CCFEB /* FlightVC.swift in Sources */,
+				35ED677D213EC504001CCFEB /* TextFieldExt.swift in Sources */,
+				35ED6779213DBD1C001CCFEB /* BookHistoryVCCell.swift in Sources */,
 				35F1C27F213459A7000DB590 /* HomeVC.swift in Sources */,
 				35F1C27B21345966000DB590 /* RegistrationVC.swift in Sources */,
 				182078972137A461005B8793 /* PassangerDetailsVCCell.swift in Sources */,

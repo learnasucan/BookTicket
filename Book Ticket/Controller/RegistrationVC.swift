@@ -39,17 +39,17 @@ class RegistrationVC: UIViewController {
                                           "mobile" : mobileTextField.text!,
                                           "email": emailTextField.text!,
                                           "password":passwordTextField.text!]
-
+        
         
         let dict: RegistrationModel = parameters.toModel()
         print(dict)
         
-            
+        
         storeData(parameter: parameters)
     }
     
     @IBAction func tapOnSignIn(_ sender: UIButton) {
-         performSegue(withIdentifier: "LoginVC", sender: self)
+        performSegue(withIdentifier: "LoginVC", sender: self)
     }
     
     
@@ -71,14 +71,14 @@ class RegistrationVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-//        getData()
+        //        getData()
     }
     
     //------------------------------------
     //MARK: Core Data Functions
     //------------------------------------
     
-
+    
     // Save the Data
     func storeData (parameter: [String : Any]) {
         let context = Utilities.getContext()
@@ -96,6 +96,7 @@ class RegistrationVC: UIViewController {
         customer.setValue(parameter["email"], forKey: "email")
         customer.setValue(parameter["password"], forKey: "password")
         
+        //UserDefaults.setUserName(<#T##UserDefaults#>)
         //save the object
         do {
             try context.save()
@@ -111,7 +112,7 @@ class RegistrationVC: UIViewController {
             passwordTextField.text = ""
             confirmPasswordTextField.text = ""
             print(customers.count)
-//            print(customers[0].value(forKey: "name") as Any)
+            //            print(customers[0].value(forKey: "name") as Any)
             
             //At last move to LoginVC
             defer {
@@ -123,9 +124,9 @@ class RegistrationVC: UIViewController {
             
         }
     }
-
     
-   
+    
+    
     
     
 }

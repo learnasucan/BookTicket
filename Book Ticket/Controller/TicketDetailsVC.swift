@@ -11,22 +11,25 @@ import CoreData
 
 class TicketDetailsVC: UIViewController {
     
-    @IBOutlet weak var ticketDetailsLabel: UILabel!
     
-    @IBOutlet weak var userDetailsLabel: UILabel!
+    @IBOutlet weak var ticketDetailsLabel: UITextView!
+    
+    
+    @IBOutlet weak var userDetailsLabel: UITextView!
+    
     
     var ticketsNew: [BookedTickets] = []
     var users: [Customer] = []
-    var myFlight: String?
-    var nameArray: [[String]] = []
-    var ageArray: [[String]] = []
+    var myFlight: String = ""
+    var nameArray: [String] = []
+    var ageArray: [String] = []
     var details : String = ""
-    
+    var passData =  [String:Any] ()
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let myFlight = myFlight else {return}
-        ticketDetailsLabel.text! = myFlight
+        //guard let myFlight = myFlight else {return}
+        ticketDetailsLabel.text! = myFlight + "\n \(String(describing: passData["name"]))"
         self.navigationItem.title = "Ticket"
         
         
@@ -45,44 +48,42 @@ class TicketDetailsVC: UIViewController {
                     print(test)
                     
                     var j = 0
+                    print(ticketsNew.count)
+                    
+                    print(ticketsNew)
                     if j < ticketsNew.count {
-                        let names = ticketsNew[j].passangerName
-                        let nameStringAsData = names?.data(using: String.Encoding.utf16)
-                        let nameS = try! JSONDecoder().decode([String].self, from: nameStringAsData!)
-                        nameArray.append(nameS)
+                        guard let fullNames = ticketsNew[j].passangerName else {return}
+                        print(fullNames)
+                        let fullNamesArr = fullNames.split(separator: " ")
                         
-                        let ages = ticketsNew[j].age
-                        let ageStringAsData = ages?.data(using: String.Encoding.utf16)
-                        let ageS = try! JSONDecoder().decode([String].self, from: ageStringAsData!)
-                        ageArray.append(ageS)
+                        nameArray.append(String(fullNamesArr[j]))
+                        
+                        guard let fullAges = ticketsNew[j].age else {return}
+                        let fullAgesArr = fullAges.split(separator: " ")
+                        ageArray.append(String(fullAgesArr[j]))
+                        print(nameArray)
+                        print(ageArray)
+                        
                         j = j + 1
-                    } else {return}
+                    } else {
+                        return
+                        
+                    }
                     
-                  
+                    
                     print(nameArray)
-                    
-                   
                     print(ageArray)
                     
-                    userDetailsLabel.text! = "\(UserDefaults.standard.getUserName())\t\(UserDefaults.standard.getUserMobile())\t\(UserDefaults.standard.getUserEmail())"
+                    userDetailsLabel.text! = "\(Utilities.getUserName())\n\(Utilities.getUserEmail())\n\(Utilities.getUserMobile())"
                     
-                   // for (age,name) in ( ageArray,nameArray) {
-                        
-                    //}
                     var i = 0
                     print(nameArray.count)
-                    print(nameArray[0].count)
-                    if i < nameArray[0].count {
-                        details = details + "Name: \(nameArray[i][0])\t Age\(ageArray[i][0])"
+                    print(nameArray.count)
+                    if i < nameArray.count {
+                        details = details + "Name: \(nameArray[i])\t Age\(ageArray[i])"
                         print(details)
                         i = i + 1
                     } else {return}
-                    
-                    
-                   // for i in nameArray.count {
-                      //
-                   // }
-                        ticketDetailsLabel.text! = details
                     
                 } else {
                     //tableView.isHidden = true
@@ -111,6 +112,6 @@ class TicketDetailsVC: UIViewController {
     }
     
     
-
+    
     
 }

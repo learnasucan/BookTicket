@@ -16,9 +16,7 @@ class PassangerDetailsVC: UIViewController {
     //-----------------------------
     
     @IBOutlet weak var tableView: UITableView!
-    
     @IBOutlet weak var saveDetailsButton: UIButton!
-    
     
     var bookingDate: String?
     var from: String?
@@ -28,7 +26,8 @@ class PassangerDetailsVC: UIViewController {
     var CollectionOfCell = [PassangerDetailsVCCell]()
     var names = [String]()
     var age = [String]()
-    var timeStamp = ""
+    var createdAt = ""
+    var passData = [String:Any] ()
     
     var tickets: [BookedTickets] = []
     //    var ticketsNew: [BookedTickets] = []
@@ -38,21 +37,31 @@ class PassangerDetailsVC: UIViewController {
         
         CollectionOfCell.forEach { cell in
             names.append(cell.nameTextField.text!)
-            
             age.append(cell.ageTextField.text!)
         }
         
+        self.save { (complete) in
+            if complete {
+                dismiss(animated: true, completion: nil)
+            }
+        }
+        
+        print(names)
+        print(age)
+        
         defer {
             
-            self.save { (complete) in
-                if complete {
-                    dismiss(animated: true, completion: nil)
+            Utilities.showAlertWithCancel(alertTitle: "Alert", alertMessage: "Do you want to confirm Ticket?", cancelTitle: "Cancel", requiredActionTitle: "Ok", passViewController: self) { (flag) in
+                
+                if flag == true {
+                    self.performSegue(withIdentifier: "FlightVC", sender: sender)
+                } else {
+                    self.dismiss(animated: true, completion: nil)
                 }
             }
             
-            print(names)
-            print(age)
         }
+        
         
     }
     
@@ -68,20 +77,8 @@ class PassangerDetailsVC: UIViewController {
     }
     
     
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
-    
     func save(completion: (_ finished: Bool) -> () ){
+        
         guard  let managedContext = appDelegate?.persistentContainer.viewContext else {
             return
         }
@@ -90,32 +87,53 @@ class PassangerDetailsVC: UIViewController {
         
         // Array of Strings
         
-        let namesArrayAsString: String = names.description
-        let agesArrayAsString: String = age.description
-        timeStamp = Utilities.getCurrentTimeStamp()
+        let stringyfyNames = Utilities.stringify(json: names)
+        print(stringyfyNames)
         
-        ticket.passangerName = namesArrayAsString
+        let stringyfyAges = Utilities.stringify(json: age)
+        let dataArray = stringyfyAges.data(using: .utf8)
         
-        ticket.age = agesArrayAsString
+        do {
+            if let jsonArray = try JSONSerialization.jsonObject(with: dataArray!, options: .allowFragments) as? [Any] {
+                print(jsonArray)
+            }
+        } catch {
+            print("Error")
+        }
         
+        createdAt = Utilities.getCurrentTimeStamp()
+        ticket.passangerName = stringyfyNames
+        //print(stringName)
+        ticket.age = stringyfyAges
+        //print(stringAge)
         ticket.dateOfJourney = bookingDate!
+        print(bookingDate!)
         ticket.fromDestination = from!
+        print(from!)
         ticket.toDestination = to!
+        print(to!)
         ticket.uniqueTicketNumber = String.random()
-        ticket.timeStamp = timeStamp
-        
+        print(String.random())
+        ticket.created_at = createdAt
+        print(createdAt)
         
         do {
             try  managedContext.save()
             print("Succesfully saved.")
             completion(true)
-            //            self.performSegue(withIdentifier: "TicketDetailsVC", sender: self)
+            //self.performSegue(withIdentifier: "TicketDetailsVC", sender: self)
         } catch  {
             debugPrint("Could not save\(error.localizedDescription)")
             completion(false)
         }
         
-        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "FlightVC" {
+            let vc = segue.destination as? FlightVC
+            vc?.passData = passData
+        }
     }
     
 }
@@ -129,17 +147,12 @@ extension PassangerDetailsVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let rowIndex:Int = indexPath.row + 1
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "PassangerDetailsVCCell", for: indexPath) as? PassangerDetailsVCCell else { return  UITableViewCell()
-            
-            
         }
         cell.rowCount.text! = String(rowIndex)
-        
+        cell.configureCell()
         CollectionOfCell.append(cell)
         return cell
     }
     
 }
 
-extension PassangerDetailsVC {
-    
-}

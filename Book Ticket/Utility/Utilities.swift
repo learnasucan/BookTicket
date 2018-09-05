@@ -15,7 +15,7 @@ class Utilities: NSObject {
     class func getCurrentTimeStamp() -> String {
         let date = Date()
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        formatter.dateFormat = "dd/MM/yyyy on HH:MM:ss"
         let result = formatter.string(from: date)
         return result
     }
@@ -31,7 +31,6 @@ class Utilities: NSObject {
     
     class func validationFunction(email_Id : String) -> Bool
     {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailTest.evaluate(with: email_Id)
     }
@@ -78,26 +77,6 @@ class Utilities: NSObject {
         return appDelegate.persistentContainer.viewContext
     }
     
-    /*
-     class func presentToolBarPicker(for done:@escaping () -> (), to cancel:String){
-     //ToolBar
-     
-     let toolBar : UIToolbar = {
-     let toolbar = UIToolbar();
-     toolbar.sizeToFit()
-     
-     let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(done));
-     let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
-     let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
-     
-     toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
-     
-     return toolbar
-     } ()
-     }
-     
-     */
-    
     //MARK: Name Validation
     
     class func nameValidation (textField:UITextField , view: UIViewController) {
@@ -107,7 +86,7 @@ class Utilities: NSObject {
         
         if name_test.evaluate(with: textField.text) == false
         {
-            let alert = UIAlertController(title: "Information", message: "Enter the name in range from 5 to 20", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Information", message: Message.rangeError, preferredStyle: .alert)
             let ok = UIAlertAction(title: "Ok", style: .default, handler: nil)
             let cancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
             
@@ -121,13 +100,12 @@ class Utilities: NSObject {
     //MARK: PICODE Validation
     
     class func pinCodeValidation(textField:UITextField , view: UIViewController) {
-        let pin_reg = "[0-9]{6}"
         
         let pin_test = NSPredicate(format: "SELF MATCHES %@", pin_reg)
         
         if pin_test.evaluate(with: textField.text) == false
         {
-            let alert = UIAlertController(title: "Information", message: "Enter 6 digit pincode", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Information", message: Message.PincodeError, preferredStyle: .alert)
             let ok = UIAlertAction(title: "Ok", style: .default, handler: nil)
             let cancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
             
@@ -141,13 +119,12 @@ class Utilities: NSObject {
     //MARK: Mobile Validation
     
     class func mobileValidation (textField:UITextField , view: UIViewController) {
-        let mobile_reg = "[0-9]{10}"
         
         let mobile_test = NSPredicate(format: "SELF MATCHES %@", mobile_reg)
         
         if mobile_test.evaluate(with: textField.text) == false
         {
-            let alert = UIAlertController(title: "Information", message: "Enter your number in correct format", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Information", message: Message.MobileError, preferredStyle: .alert)
             let ok = UIAlertAction(title: "Ok", style: .default, handler: nil)
             let cancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
             
@@ -162,13 +139,11 @@ class Utilities: NSObject {
     
     class func emailValidation (textField:UITextField , view: UIViewController) {
         
-        let email_reg = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
-        
         let email_test = NSPredicate(format: "SELF MATCHES %@", email_reg)
         
         if email_test.evaluate(with: textField.text) == false
         {
-            let alert = UIAlertController(title: "Information", message: "Please enter valid email id.", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Information", message: Message.EmailError, preferredStyle: .alert)
             let ok = UIAlertAction(title: "Ok", style: .default, handler: nil)
             let cancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
             
@@ -185,14 +160,14 @@ class Utilities: NSObject {
         
         guard let theText = textField.text, !theText.isEmpty else {
             // theText is empty
-            alertWithoutButtonAction(alertTitle: "Alert", alertMessage: "Please Enter Somethimg", messageOnButton: "Ok", passViewController: view)
+            alertWithoutButtonAction(alertTitle: "Alert", alertMessage: Message.EmptyFieldError, messageOnButton: "Ok", passViewController: view)
             return // or throw
         }
-        
         
     }
     
     //generate random alpha numberic string
+    
     class func randomAlphaNumericString(length: Int = 10) -> String {
         let base = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         var randomString: String = ""
@@ -203,23 +178,115 @@ class Utilities: NSObject {
         }
         return randomString
         
-        //let randomString = String.randomAlphaNumericString()
     }
     
+    /** Set Logged in UserName **/
     
+    class func setUserName(userName: String) {
+        UserDefaults.standard.set(userName, forKey: "name")
+        UserDefaults.standard.synchronize()
+    }
     
-
+    /** Get Logged in UserName **/
     
+    class func getUserName() -> String {
+        return UserDefaults.standard.string(forKey: "name") ?? ""
+    }
     
+    /** Set Logged in UserEmail **/
     
+    class func setUserEmail(userEmail: String) {
+        UserDefaults.standard.set(userEmail, forKey: "email")
+        UserDefaults.standard.synchronize()
+    }
     
+    /** Get Logged in UserEmail **/
     
+    class func getUserEmail() -> String {
+        return UserDefaults.standard.string(forKey: "email") ?? ""
+    }
     
+    /** Set Logged in UserMobile **/
+    
+    class func setUserMobile(userMobile: String) {
+        UserDefaults.standard.set(userMobile, forKey: "mobile")
+        UserDefaults.standard.synchronize()
+    }
+    
+    /** Get Logged in UserEmail **/
+    
+    class func getUserMobile() -> String {
+        return UserDefaults.standard.string(forKey: "mobile") ?? ""
+    }
     
     //
+    class func stringify(json: Any, prettyPrinted: Bool = false) -> String {
+        var options: JSONSerialization.WritingOptions = []
+        if prettyPrinted {
+            options = JSONSerialization.WritingOptions.prettyPrinted
+        }
+        
+        do {
+            let data = try JSONSerialization.data(withJSONObject: json, options: options)
+            if let string = String(data: data, encoding: String.Encoding.utf8) {
+                return string
+            }
+        } catch {
+            print(error)
+        }
+        
+        return ""
+    }
+    
+    class func setUserIsLoggedInOrNot(flag: Bool) {
+        UserDefaults.standard.set(flag, forKey: UserDefaultsKey.UserLoginStatusFlag)
+        UserDefaults.standard.synchronize()
+    }
+    
+    class func getUserIsLoggedInOrNot() -> Bool {
+        
+            return UserDefaults.standard.bool(forKey: UserDefaultsKey.UserLoginStatusFlag)
+    }
+    
+    class func logoutFromLocalStorage() {
+        Utilities.setUserIsLoggedInOrNot(flag: false)
+        
+        let mainStoryboard = UIStoryboard(name: "HomeVC", bundle: nil)
+        let vc = mainStoryboard.instantiateViewController(withIdentifier: "LoginVC") as? LoginVC
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let navigationController = UINavigationController(rootViewController: vc!)
+       
+        
+        //Animation added to rootviewcontroller
+        UIView.transition(with: (appDelegate.window)!, duration: 0.5, options: .transitionCrossDissolve, animations: {
+            appDelegate.window?.rootViewController = navigationController
+        }, completion: { completed in
+            // maybe do something here
+        })
+        
+    }
+    
+}
+
+extension String {
+    
+    // Made by Prachit from <3
+    
+    func convert <T:Codable> () -> T? {
+        
+        if let data = self.data(using: .utf8) {
+            
+            return try? JSONDecoder().decode(T.self, from: data)
+            
+        }
+        
+        return nil
+    }
+    
 }
 
 //MARK:UserDefaults
+
 enum UserDefaultsKeys : String {
     case isLoggedIn
     case userID
@@ -229,9 +296,6 @@ enum UserDefaultsKeys : String {
     case userAddress = "address"
     case userPin = "pincode"
 }
-
-
-
 
 extension UserDefaults{
     
@@ -301,8 +365,6 @@ extension UserDefaults{
         return UserDefaultsKeys.userPin.rawValue
     }
     
-    
-    
 }
 
 extension Date{
@@ -321,4 +383,3 @@ extension Date{
     
 }
 
-// message.created_at = Date().getDateString()

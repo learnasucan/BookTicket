@@ -10,9 +10,12 @@ import UIKit
 import CoreData
 
 class FlightVC: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
-
+    var valueToPass:String!
+    var passData: [String:Any]!
+    
+    
     var flights = ["Mumbai Flights\t3AM\t₹2000",
                    "Ahamadabad Flights\t5AM\t₹3000",
                    "Kerla Flights\t6AM\t₹2000",
@@ -22,10 +25,13 @@ class FlightVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         tableView.delegate = self
         tableView.dataSource = self
         // Do any additional setup after loading the view.
+        passData = ["name": "Prachit",
+                    "Email": "tyr@gmail.in",
+                    "mobile":"31414244"]
     }
     
 }
@@ -40,7 +46,7 @@ extension FlightVC: UITableViewDataSource, UITableViewDelegate {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "FlightVCCell", for: indexPath ) as? FlightVCCell else { return  UITableViewCell() }
         
         cell.labelFlights.text! = flights[indexPath.row]
-
+        
         return cell
         
     }
@@ -48,14 +54,22 @@ extension FlightVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 70
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "TicketDetailsVC", sender: flights[indexPath.row])
+        // Get Cell Label
+        let indexPath = tableView.indexPathForSelectedRow!
+        let currentCell = tableView.cellForRow(at: indexPath)! as! FlightVCCell
+        
+        valueToPass = currentCell.labelFlights.text!
+        performSegue(withIdentifier: "TicketDetailsVC", sender: self)
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "TicketDetailsVC" {
             let vc = segue.destination as? TicketDetailsVC
-            vc?.myFlight = sender as? String
+            vc?.myFlight = valueToPass
+            vc?.passData = passData
         }
     }
 }

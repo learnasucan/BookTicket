@@ -8,23 +8,17 @@
 
 import UIKit
 import CoreData
-
+let defaults = UserDefaults.standard
 class LoginVC: UIViewController {
     
     
     @IBOutlet weak var usenameTextField: UITextField!
-    
     @IBOutlet weak var passwordTextField: UITextField!
-    
     @IBOutlet weak var submitButton: UIButton!
-    
     @IBAction func tapOnSubmit(_ sender: UIButton) {
-        
+    
         //guard let
         getData()
-        
-        
-        
     }
     
     @IBAction func tapOnSignUp(_ sender: UIButton) {
@@ -36,6 +30,17 @@ class LoginVC: UIViewController {
         
         //Set navigation name
         self.navigationItem.title = "Login"
+        
+        //** If user is login then go to HomeVC
+        /*
+         
+         if Utility.getUserIsLoggedInOrNot() {
+         let storyboard = UIStoryboard(name: "HomeStoryBoard", bundle: nil)
+         let vc = storyboard.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
+         self.navigationController?.pushViewController(vc, animated: true)
+         }
+         
+         */
         
         usenameTextField.delegate = self
         passwordTextField.delegate = self
@@ -87,39 +92,52 @@ class LoginVC: UIViewController {
         print(userFetch.fetchBatchSize)
         
         do {
+            //go get the results
+            let searchResults = try Utilities.getContext().fetch(userFetch)
             
-            if let user = try Utilities.getContext().fetch(userFetch)[0] as? Customer {
+            //I like to check the size of the returned results!
+            print ("num of results = \(searchResults.count)")
+            if searchResults.count != 0 {
                 
-                if user.name ==  self.usenameTextField.text && user.password == self.passwordTextField.text {
-                    print("Email: \(String(describing: user.email!))")
-                    //Save in UserDefaults
-                    UserDefaults.standard.setLoggedIn(value: true)          // Bool
-                    UserDefaults.standard.setUserName(value: user.name!) // String
-                    UserDefaults.standard.setUserEmail(value: user.email!) // String
-                    UserDefaults.standard.setUserAdd(value: user.address!) // String
-                    UserDefaults.standard.setUserPin(value: user.pincode!) // String
-                    UserDefaults.standard.setUserMobile(value: user.mobile!) // String
+                if let user = try Utilities.getContext().fetch(userFetch)[0] as? Customer {
                     
-                    defer {
-                        performSegue(withIdentifier: "HomeVC", sender: self)
+                    if user.name ==  self.usenameTextField.text && user.password == self.passwordTextField.text {
+                        print("Email: \(String(describing: user.email!))")
+                        //Save in UserDefaults
+                        
+                        
+                        Utilities.setUserName(userName: user.name!)
+                        Utilities.setUserEmail(userEmail: user.email!)
+                        Utilities.setUserMobile(userMobile: user.mobile!)
+                        Utilities.setUserIsLoggedInOrNot(flag: true)
+                        
+                        /*
+                        UserDefaults.standard.setUserAdd(value: user.address!) // String
+                        UserDefaults.standard.setUserPin(value: user.pincode!) // String
+                        UserDefaults.standard.setUserMobile(value: user.mobile!) // String
+                        */
+                        
+                        defer {
+                            performSegue(withIdentifier: "HomeVC", sender: self)
+                        }
+                        
                     }
                     
-                } else {
-                    Utilities.alertWithoutButtonAction(alertTitle: "Alert", alertMessage: "User is not Present", messageOnButton: "Ok", passViewController: self)
                 }
                 
+            } else {
+                Utilities.alertWithoutButtonAction(alertTitle: "Alert", alertMessage: Message.EmptyFieldError, messageOnButton: "OK", passViewController: self)
             }
-         //
+            //
+        } catch let error as NSError {
+            print("Error: \(error.localizedDescription)")
+        }
         
-    } catch let error as NSError {
-    print("Error: \(error.localizedDescription)")
     }
     
-}
-
-
-
-
+    
+    
+    
 }
 
 extension LoginVC: UITextFieldDelegate{

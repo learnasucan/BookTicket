@@ -21,7 +21,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //IQKeyBoard Enable
         IQKeyboardManager.shared.enable = true
-        
+        /*
+         
+         *********** if any root controller created
+         
+         if Utility.getUserIsLoggedInOrNot() {
+         
+         let mainStoryboard = UIStoryboard(name: "main", bundle: nil)
+         
+         // rootViewController
+         let rootViewController = mainStoryboard.instantiateViewController(withIdentifier: "YourVC") as? YourVC
+         let yourVC = YourVC()
+         
+         // navigationController
+         let navigationController = UINavigationController()
+         navigationController.viewControllers = [yourVC, rootViewController!]
+         navigationController.isNavigationBarHidden = true
+         // self.window
+         self.window = UIWindow(frame: UIScreen.main.bounds)
+         self.window!.rootViewController = navigationController
+         
+         //            self.createConnectionUsingPusher()
+         } else {
+         
+         let mainStoryboard = UIStoryboard(name: "main", bundle: nil)
+         // rootViewController
+         let rootViewController = mainStoryboard.instantiateViewController(withIdentifier: "LoginVC") as? LoginVC
+         //            let rootViewController = mainStoryboard.instantiateViewController(withIdentifier: "InterestLikeTwitterVC") as? InterestLikeTwitterVC
+         // navigationController
+         let navigationController = UINavigationController(rootViewController: rootViewController!)
+         navigationController.isNavigationBarHidden = true
+         // self.window
+         self.window = UIWindow(frame: UIScreen.main.bounds)
+         self.window!.rootViewController = navigationController
+         }
+ 
+         */
         return true
     }
 
