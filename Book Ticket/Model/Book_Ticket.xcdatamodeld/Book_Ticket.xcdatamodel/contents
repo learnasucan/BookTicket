@@ -10,12 +10,6 @@
         <attribute name="uniqueTicketNumber" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="customer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Customer" inverseName="tickets" inverseEntity="Customer" syncable="YES"/>
     </entity>
-    <entity name="BookingDetails" representedClassName="BookingDetails" syncable="YES" codeGenerationType="class">
-        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="from" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="passangers" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="to" optional="YES" attributeType="String" syncable="YES"/>
-    </entity>
     <entity name="Customer" representedClassName="Customer" syncable="YES" codeGenerationType="class">
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
@@ -23,11 +17,10 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="pincode" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="tickets" toMany="YES" deletionRule="Nullify" destinationEntity="BookedTickets" inverseName="customer" inverseEntity="BookedTickets" syncable="YES"/>
+        <relationship name="tickets" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="BookedTickets" inverseName="customer" inverseEntity="BookedTickets" syncable="YES"/>
     </entity>
     <elements>
-        <element name="BookedTickets" positionX="223" positionY="-18" width="128" height="165"/>
-        <element name="BookingDetails" positionX="-63" positionY="27" width="128" height="105"/>
-        <element name="Customer" positionX="-63" positionY="-18" width="128" height="150"/>
+        <element name="BookedTickets" positionX="223" positionY="-18" width="128" height="163"/>
+        <element name="Customer" positionX="-63" positionY="-18" width="128" height="148"/>
     </elements>
 </model>

@@ -15,7 +15,6 @@ class HomeVC: UIViewController {
     //----------------------------
     
     @IBOutlet weak var bookTicketButton: UIButton!
-    
     @IBOutlet weak var bookHistoryButton: UIButton!
     
     //---------------------------

@@ -9,24 +9,8 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Book Ticket/Controller/BookTicketVC.swift"
-            timestampString = "557832558.000066"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "168"
-            endingLineNumber = "168"
-            landmarkName = "pickerView(_:didSelectRow:inComponent:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Book Ticket/Controller/RegistrationVC.swift"
-            timestampString = "557832558.000149"
+            timestampString = "557852081.896549"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "45"
@@ -42,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Book Ticket/Controller/LoginVC.swift"
-            timestampString = "557832558.0002151"
+            timestampString = "557852081.8966269"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "92"
@@ -58,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Book Ticket/Controller/FlightVC.swift"
-            timestampString = "557832558.000293"
+            timestampString = "557852081.896706"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "70"
@@ -74,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Book Ticket/Controller/TicketDetailsVC.swift"
-            timestampString = "557832558.000367"
+            timestampString = "557852081.89679"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "63"
@@ -90,13 +74,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Book Ticket/Controller/BookHistoryVC.swift"
-            timestampString = "557832558.000434"
+            timestampString = "557852081.896859"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "87"
             endingLineNumber = "87"
-            landmarkName = "BookHistoryVC"
-            landmarkType = "21">
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -106,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Book Ticket/Controller/PassangerDetailsVC.swift"
-            timestampString = "557832558.000563"
+            timestampString = "557852081.896963"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "103"
@@ -122,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Book Ticket/Controller/PassangerDetailsVC.swift"
-            timestampString = "557832558.00102"
+            timestampString = "557852081.89704"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "98"
@@ -138,7 +122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Book Ticket/Controller/PassangerDetailsVC.swift"
-            timestampString = "557832558.001321"
+            timestampString = "557852081.897114"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "42"
@@ -154,7 +138,7 @@
                   moduleName = "Book Ticket"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/solutionplanets/Documents/downloads/prachit/UploadGit/Book%20Ticket/Book%20Ticket/Controller/PassangerDetailsVC.swift"
-                  timestampString = "557832411.335691"
+                  timestampString = "557851779.072083"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "43"
@@ -169,7 +153,7 @@
                   moduleName = "Book Ticket"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/solutionplanets/Documents/downloads/prachit/UploadGit/Book%20Ticket/Book%20Ticket/Controller/PassangerDetailsVC.swift"
-                  timestampString = "557832411.338702"
+                  timestampString = "557851779.075141"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "44"
@@ -177,6 +161,22 @@
                   offsetFromSymbolStart = "26">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Book Ticket/Controller/Cell/BookHistoryVCCell.swift"
+            timestampString = "557852081.897174"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "configureCell(ticket:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

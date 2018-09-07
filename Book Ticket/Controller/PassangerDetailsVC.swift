@@ -101,6 +101,17 @@ class PassangerDetailsVC: UIViewController {
             print("Error")
         }
         
+//        passData = ["name": "Prachit",
+//                    "email": "tyr@gmail.in",
+//                    "mobile":"31414244",
+//                    "bookingDate":bookingDate!,
+//                    "fromLocation":from!,
+//                    "toLocation":to!,
+//                    "createdAt":createdAt,
+//                    "age":createdAt,
+//                    "mobile":createdAt]
+        
+        
         createdAt = Utilities.getCurrentTimeStamp()
         ticket.passangerName = stringyfyNames
         //print(stringName)
@@ -112,7 +123,8 @@ class PassangerDetailsVC: UIViewController {
         print(from!)
         ticket.toDestination = to!
         print(to!)
-        ticket.uniqueTicketNumber = String.random()
+        let ticketNumber = String.random()
+        ticket.uniqueTicketNumber = ticketNumber
         print(String.random())
         ticket.created_at = createdAt
         print(createdAt)
@@ -121,7 +133,6 @@ class PassangerDetailsVC: UIViewController {
             try  managedContext.save()
             print("Succesfully saved.")
             completion(true)
-            //self.performSegue(withIdentifier: "TicketDetailsVC", sender: self)
         } catch  {
             debugPrint("Could not save\(error.localizedDescription)")
             completion(false)

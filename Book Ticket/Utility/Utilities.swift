@@ -266,8 +266,21 @@ class Utilities: NSObject {
         
     }
     
+    class func serilizedTO<T>(obj: Data?) -> [T] {
+        var array = [T] ()
+        
+        do {
+            if let jsonArray = try JSONSerialization.jsonObject(with: obj!, options: .allowFragments) as? [T] {
+                array = jsonArray
+            }
+        } catch {
+            print("Error")
+        }
+        
+        return array
 }
 
+}
 extension String {
     
     // Made by Prachit from <3

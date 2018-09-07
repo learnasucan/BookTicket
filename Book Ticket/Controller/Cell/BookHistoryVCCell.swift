@@ -35,6 +35,7 @@ class BookHistoryVCCell: UITableViewCell {
                 print(jsonNameArray)
             }
         } catch {
+//            #error()
             print("Error")
         }
         
