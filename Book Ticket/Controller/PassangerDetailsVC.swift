@@ -28,6 +28,9 @@ class PassangerDetailsVC: UIViewController {
     var age = [String]()
     var createdAt = ""
     var passData = [String:Any] ()
+    var jsonNamesArr: [Any] = []
+    var jsonAgesArr: [Any] = []
+    var details = ""
     
     var tickets: [BookedTickets] = []
     //    var ticketsNew: [BookedTickets] = []
@@ -92,24 +95,40 @@ class PassangerDetailsVC: UIViewController {
         
         let stringyfyAges = Utilities.stringify(json: age)
         let dataArray = stringyfyAges.data(using: .utf8)
+        let dataNameArray = stringyfyNames.data(using: .utf8)
+        let dataAgeArray = stringyfyAges.data(using: .utf8)
         
         do {
-            if let jsonArray = try JSONSerialization.jsonObject(with: dataArray!, options: .allowFragments) as? [Any] {
-                print(jsonArray)
+            if let jsonNameArray = try JSONSerialization.jsonObject(with: dataNameArray!, options: .allowFragments) as? [Any] {
+                jsonNamesArr = jsonNameArray
+                print(jsonNameArray)
+            }
+        } catch {
+            //            #error()
+            print("Error")
+        }
+        
+        do {
+            if let jsonAgeArray = try JSONSerialization.jsonObject(with: dataAgeArray!, options: .allowFragments) as? [Any] {
+                jsonAgesArr = jsonAgeArray
+                print(jsonAgeArray)
             }
         } catch {
             print("Error")
         }
         
-//        passData = ["name": "Prachit",
-//                    "email": "tyr@gmail.in",
-//                    "mobile":"31414244",
-//                    "bookingDate":bookingDate!,
-//                    "fromLocation":from!,
-//                    "toLocation":to!,
-//                    "createdAt":createdAt,
-//                    "age":createdAt,
-//                    "mobile":createdAt]
+        for (name, age) in zip(jsonNamesArr, jsonAgesArr) {
+            details = details + ("\(name) of \(age)\n")
+            print("\(name): \(age)")
+        }
+        
+        passData = ["name": details,
+                    "email": Utilities.getUserEmail(),
+                    "mobile":Utilities.getUserMobile(),
+                    "bookingDate":bookingDate!,
+                    "fromLocation":from!,
+                    "toLocation":to!,
+                    "createdAt":createdAt]
         
         
         createdAt = Utilities.getCurrentTimeStamp()

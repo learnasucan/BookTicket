@@ -10,28 +10,35 @@ import UIKit
 import CoreData
 
 class BookHistoryVC: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
     
-    var tickets: [BookedTickets] = []
+    var tickets: [BookedTickets]? {
+        didSet{
+            tableView.reloadData()
+        }
+    }
     var users: [Customer] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         tableView.delegate = self
         tableView.dataSource = self
         // Do any additional setup after loading the view.
         
         self.fetch { (complete) in
             if complete {
-                if tickets.count >= 1 {
+                guard  let tickets = tickets else {
+                    return
+                }
+                if (tickets.count) >= 1 {
                     //tableView.isHidden = false
-                    print(tickets)
+                    print(tickets as Any)
                 } else {
                     return
                 }
-
+                
             } else {
                 //tableView.isHidden = true
             }
@@ -42,10 +49,10 @@ class BookHistoryVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        
+    }
     
-        }
     
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -59,8 +66,10 @@ class BookHistoryVC: UIViewController {
         
         do {
             users = try managedContext.fetch(fetchRequest1) as! [Customer]
-            tickets = try managedContext.fetch(fetchRequest2) as! [BookedTickets]
+            
+            tickets = try ((managedContext.fetch(fetchRequest2) as? [BookedTickets]))
             print("Succesfully Fetched")
+            tableView.reloadData()
             completion(true)
         } catch  {
             debugPrint("Could Not Fetch:\(error.localizedDescription)")
@@ -69,7 +78,7 @@ class BookHistoryVC: UIViewController {
         
         
     }
-
+    
 }
 
 extension BookHistoryVC: UITableViewDelegate, UITableViewDataSource{
@@ -78,6 +87,9 @@ extension BookHistoryVC: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard  let tickets = tickets else {
+            return 0
+        }
         return tickets.count
     }
     
@@ -85,9 +97,12 @@ extension BookHistoryVC: UITableViewDelegate, UITableViewDataSource{
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "BookHistoryVCCell", for: indexPath) as? BookHistoryVCCell else { return UITableViewCell()}
         
+        guard  let tickets = tickets else {
+            return UITableViewCell()
+        }
+        
         let ticket = tickets[indexPath.row]
         cell.configureCell(ticket: ticket)
-        
         
         return cell
     }
@@ -95,6 +110,6 @@ extension BookHistoryVC: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 400
     }
-
+    
     
 }

@@ -13,7 +13,7 @@ class FlightVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     var valueToPass:String!
-    var passData: [String:Any]!
+    var passData: [String:Any]?
     
     
     var flights = ["Mumbai Flights\t3AM\t₹2000",
@@ -29,9 +29,6 @@ class FlightVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         // Do any additional setup after loading the view.
-        passData = ["name": "Prachit",
-                    "Email": "tyr@gmail.in",
-                    "mobile":"31414244"]
     }
     
 }
@@ -69,7 +66,7 @@ extension FlightVC: UITableViewDataSource, UITableViewDelegate {
         if segue.identifier == "TicketDetailsVC" {
             let vc = segue.destination as? TicketDetailsVC
             vc?.myFlight = valueToPass
-            vc?.passData = passData
+            vc?.passData = passData!
         }
     }
 }

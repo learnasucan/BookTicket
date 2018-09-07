@@ -13,9 +13,12 @@ class TicketDetailsVC: UIViewController {
     
     
     @IBOutlet weak var ticketDetailsLabel: UITextView!
-    
-    
     @IBOutlet weak var userDetailsLabel: UITextView!
+    
+    
+    @IBOutlet weak var doneButton: UIButton!
+    
+ 
     
     
     var ticketsNew: [BookedTickets] = []
@@ -25,11 +28,13 @@ class TicketDetailsVC: UIViewController {
     var ageArray: [String] = []
     var details : String = ""
     var passData =  [String:Any] ()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //guard let myFlight = myFlight else {return}
-        ticketDetailsLabel.text! = myFlight + "\n \(String(describing: passData["name"]))"
+        ticketDetailsLabel.text! = myFlight +
+        "\nName: \(String(describing: passData["name"]!))\nEmail: \((String(describing: passData["email"]!)))\nMobile: \((String(describing: passData["mobile"]!)))\nBooking Date: \((String(describing: passData["bookingDate"]!)))\nFrom: \((String(describing: passData["fromLocation"]!)))\nTo: \((String(describing: passData["toLocation"]!)))"
+        
         self.navigationItem.title = "Ticket"
         
         
@@ -73,8 +78,7 @@ class TicketDetailsVC: UIViewController {
                     
                     print(nameArray)
                     print(ageArray)
-                    
-                    userDetailsLabel.text! = "\(Utilities.getUserName())\n\(Utilities.getUserEmail())\n\(Utilities.getUserMobile())"
+            
                     
                     var i = 0
                     print(nameArray.count)
@@ -91,6 +95,14 @@ class TicketDetailsVC: UIViewController {
             }
         }
     }
+    
+    //MARK: Button Action
+    
+    @IBAction func tapOnGoToHome(_ sender: UIButton) {
+//        performSegue(withIdentifier: "unwindToBookTicketVC", sender: self)
+        
+    }
+    
     
     func fetch(completion: (_ complete : Bool) -> ()) {
         guard let managedContext = appDelegate?.persistentContainer.viewContext else { return }

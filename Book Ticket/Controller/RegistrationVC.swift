@@ -26,6 +26,7 @@ class RegistrationVC: UIViewController {
     
     
     var customers = [NSManagedObject] ()
+    var users = [Customer] ()
     
     //------------------------------------
     //MARK: Button Actions
@@ -45,7 +46,26 @@ class RegistrationVC: UIViewController {
         print(dict)
         
         
-        storeData(parameter: parameters)
+        //        storeData(parameter: parameters)
+        
+        self.save(parameter: parameters) { (complete) in
+            if complete {
+                //TODO: Make function
+                nameTextField.text = ""
+                addressTextField.text = ""
+                pincodeTextField.text = ""
+                mobileTextField.text = ""
+                emailTextField.text = ""
+                passwordTextField.text = ""
+                confirmPasswordTextField.text = ""
+                //dismiss(animated: true, completion: nil)
+                
+                //At last move to LoginVC
+                
+                performSegue(withIdentifier: "LoginVC", sender: self)
+                
+            }
+        }
     }
     
     @IBAction func tapOnSignIn(_ sender: UIButton) {
@@ -125,9 +145,33 @@ class RegistrationVC: UIViewController {
         }
     }
     
-    
-    
-    
+    func save(parameter: [String : Any], completion: (_ finished: Bool) -> () ){
+        
+        guard  let managedContext = appDelegate?.persistentContainer.viewContext else {
+            return
+        }
+        
+        let user = Customer(context: managedContext)
+        
+        //set the entity values
+        user.name = (parameter["name"] as! String)
+        user.address = (parameter["address"] as! String)
+        user.email = (parameter["email"] as! String)
+        user.mobile = (parameter["mobile"] as! String)
+        user.pincode = (parameter["pincode"] as! String)
+        user.password = (parameter["password"] as! String)
+        
+        
+        do {
+            try  managedContext.save()
+            print("Succesfully saved.")
+            completion(true)
+        } catch  {
+            debugPrint("Could not save\(error.localizedDescription)")
+            completion(false)
+        }
+        
+    }
     
 }
 

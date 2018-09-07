@@ -55,7 +55,7 @@ class BookHistoryVCCell: UITableViewCell {
         
         self.bookerNameLabel.text! = Utilities.getUserName()
         //self.ageLabel.text! = "Ages: \(ticket.age!)"
-        self.passangerNameLabel.text! = "Passangers Details:\n\(details)"
+        self.passangerNameLabel.text! = "Passangers Details:\n\(details)" 
         self.fromLabel.text! = "From: \(ticket.fromDestination!)"
         self.toLabel.text! = "To: \(ticket.toDestination!)"
         self.createdLabel.text! = "Booked Date: \(ticket.created_at!)"

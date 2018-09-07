@@ -100,7 +100,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.92549019610000005" green="0.92156862750000001" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="uVb-dq-xhD" firstAttribute="centerX" secondItem="LW7-w7-Vzc" secondAttribute="centerX" id="HI4-Qk-wDz"/>
                             <constraint firstItem="LW7-w7-Vzc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="YpR-UK-oH4"/>
@@ -205,7 +205,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.92549019610000005" green="0.92156862750000001" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6C9-y5-mRH" firstAttribute="top" secondItem="ycT-u9-11Z" secondAttribute="top" constant="100" id="3Ni-WK-hdo"/>
                             <constraint firstItem="6C9-y5-mRH" firstAttribute="leading" secondItem="ycT-u9-11Z" secondAttribute="leading" constant="16" id="CPo-x9-1Tc"/>
@@ -714,30 +714,35 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mdd-Hy-oVp">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="6DP-Dd-rY2">
-                                        <rect key="frame" x="20" y="20" width="335" height="607"/>
-                                        <subviews>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="userDetailsLabel" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="egg-wx-lq3">
-                                                <rect key="frame" x="0.0" y="0.0" width="335" height="293.5"/>
-                                                <color key="backgroundColor" red="0.92549019610000005" green="0.92156862750000001" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                            </textView>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="ticketDetailsLabel" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="aTw-Mx-zVn">
-                                                <rect key="frame" x="0.0" y="313.5" width="335" height="293.5"/>
-                                                <color key="backgroundColor" red="0.92549019610000005" green="0.92156862750000001" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                            </textView>
-                                        </subviews>
-                                    </stackView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="ticketDetailsLabel" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="aTw-Mx-zVn">
+                                        <rect key="frame" x="20" y="20" width="335" height="433"/>
+                                        <color key="backgroundColor" red="0.92549019610000005" green="0.92156862750000001" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="433" id="6wE-sx-w4D"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xjn-6i-n1f">
+                                        <rect key="frame" x="19.5" y="483" width="335" height="30"/>
+                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Go To Home">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="tapOnGoToHome:" destination="OwN-rl-iDH" eventType="touchUpInside" id="i1x-dZ-SLV"/>
+                                            <segue destination="Xbv-Lq-9Eq" kind="unwind" unwindAction="unwindToBookVCWithSegue:" id="uGy-oh-If9"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="6DP-Dd-rY2" firstAttribute="top" secondItem="Mdd-Hy-oVp" secondAttribute="top" constant="20" id="29i-Wj-Q0J"/>
-                                    <constraint firstItem="6DP-Dd-rY2" firstAttribute="leading" secondItem="Mdd-Hy-oVp" secondAttribute="leading" constant="20" id="cdu-bw-CT0"/>
-                                    <constraint firstAttribute="bottom" secondItem="6DP-Dd-rY2" secondAttribute="bottom" constant="20" id="iA2-24-u9a"/>
-                                    <constraint firstAttribute="trailing" secondItem="6DP-Dd-rY2" secondAttribute="trailing" constant="20" id="sbc-ZY-djp"/>
+                                    <constraint firstItem="aTw-Mx-zVn" firstAttribute="centerX" secondItem="xjn-6i-n1f" secondAttribute="centerX" id="8sr-eb-AZw"/>
+                                    <constraint firstItem="aTw-Mx-zVn" firstAttribute="leading" secondItem="Mdd-Hy-oVp" secondAttribute="leading" constant="20" id="L3s-zU-mlW"/>
+                                    <constraint firstItem="xjn-6i-n1f" firstAttribute="width" secondItem="aTw-Mx-zVn" secondAttribute="width" id="Qta-IL-Mft"/>
+                                    <constraint firstItem="aTw-Mx-zVn" firstAttribute="centerX" secondItem="Mdd-Hy-oVp" secondAttribute="centerX" id="eGy-w0-c1R"/>
+                                    <constraint firstItem="xjn-6i-n1f" firstAttribute="top" secondItem="aTw-Mx-zVn" secondAttribute="bottom" constant="30" id="hH6-C9-K4E"/>
+                                    <constraint firstItem="aTw-Mx-zVn" firstAttribute="top" secondItem="Mdd-Hy-oVp" secondAttribute="top" constant="20" id="tz4-Px-Wns"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -751,11 +756,12 @@
                         <viewLayoutGuide key="safeArea" id="W4Z-O4-oeZ"/>
                     </view>
                     <connections>
+                        <outlet property="doneButton" destination="xjn-6i-n1f" id="vJj-eT-C0V"/>
                         <outlet property="ticketDetailsLabel" destination="aTw-Mx-zVn" id="yy1-lD-SH2"/>
-                        <outlet property="userDetailsLabel" destination="egg-wx-lq3" id="hTT-py-B8M"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l2W-lE-YmN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Xbv-Lq-9Eq" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="5012" y="742.5787106446777"/>
         </scene>

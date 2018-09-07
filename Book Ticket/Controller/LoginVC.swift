@@ -17,6 +17,8 @@ class LoginVC: UIViewController {
     @IBOutlet weak var submitButton: UIButton!
     @IBAction func tapOnSubmit(_ sender: UIButton) {
     
+    var users = [Customer] ()
+        
         //guard let
         getData()
     }
@@ -68,9 +70,7 @@ class LoginVC: UIViewController {
             for customer in searchResults as! [NSManagedObject] {
                 //get the Key Value pairs (although there may be a better way to do that...
                 
-                print("\(customer.value(forKey: "name") ?? "psp") \(customer.value(forKey: "email") ?? "psp@g.in")\(customer.value(forKey: "password") ?? "psp")")
-                
-                
+                print("\(customer.value(forKey: "name") ?? "")\n \(customer.value(forKey: "email") ?? "")\n \(customer.value(forKey: "password") ?? "")")
             }
         } catch {
             print("Error with request: \(error)")
@@ -112,10 +112,10 @@ class LoginVC: UIViewController {
                         Utilities.setUserIsLoggedInOrNot(flag: true)
                         
                         /*
-                        UserDefaults.standard.setUserAdd(value: user.address!) // String
-                        UserDefaults.standard.setUserPin(value: user.pincode!) // String
-                        UserDefaults.standard.setUserMobile(value: user.mobile!) // String
-                        */
+                         UserDefaults.standard.setUserAdd(value: user.address!) // String
+                         UserDefaults.standard.setUserPin(value: user.pincode!) // String
+                         UserDefaults.standard.setUserMobile(value: user.mobile!) // String
+                         */
                         
                         defer {
                             performSegue(withIdentifier: "HomeVC", sender: self)
@@ -134,9 +134,6 @@ class LoginVC: UIViewController {
         }
         
     }
-    
-    
-    
     
 }
 
