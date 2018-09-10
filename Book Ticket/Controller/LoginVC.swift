@@ -16,8 +16,8 @@ class LoginVC: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var submitButton: UIButton!
     @IBAction func tapOnSubmit(_ sender: UIButton) {
-    
-    var users = [Customer] ()
+        
+        var users = [Customer] ()
         
         //guard let
         getData()
@@ -104,18 +104,13 @@ class LoginVC: UIViewController {
                     if user.name ==  self.usenameTextField.text && user.password == self.passwordTextField.text {
                         print("Email: \(String(describing: user.email!))")
                         //Save in UserDefaults
-                        
+                        //Singleton 
+                        Singleton.user = user
                         
                         Utilities.setUserName(userName: user.name!)
                         Utilities.setUserEmail(userEmail: user.email!)
                         Utilities.setUserMobile(userMobile: user.mobile!)
                         Utilities.setUserIsLoggedInOrNot(flag: true)
-                        
-                        /*
-                         UserDefaults.standard.setUserAdd(value: user.address!) // String
-                         UserDefaults.standard.setUserPin(value: user.pincode!) // String
-                         UserDefaults.standard.setUserMobile(value: user.mobile!) // String
-                         */
                         
                         defer {
                             performSegue(withIdentifier: "HomeVC", sender: self)
@@ -155,31 +150,5 @@ extension LoginVC: UITextFieldDelegate{
             break
         }
     }
-    
-    //    func setupAddTargetIsNotEmptyTextFields() {
-    //        self.submitButton.isEnabled = false //hidden okButton
-    //        usenameTextField.addTarget(self, action: #selector(textFieldsIsNotEmpty),
-    //                                   for: .editingChanged)
-    //        passwordTextField.addTarget(self, action: #selector(textFieldsIsNotEmpty),
-    //                                    for: .editingChanged)
-    //
-    //    }
-    //
-    //    @objc func textFieldsIsNotEmpty(sender: UITextField) {
-    //
-    //        sender.text = sender.text?.trimmingCharacters(in: .whitespaces)
-    //
-    //        guard
-    //            let name = usenameTextField.text, !name.isEmpty,
-    //            let password = passwordTextField.text, !password.isEmpty
-    //            else {
-    //                self.submitButton.isEnabled = false
-    ////                Utilities.alertWithoutButtonAction(alertTitle: "Alert", alertMessage: "Please Fill All Fields", messageOnButton: "Ok", passViewController: self)
-    //                return
-    //        }
-    //        // enable okButton if all conditions are met
-    //        submitButton.isEnabled = true
-    //    }
-    
-    
+   
 }

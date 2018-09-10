@@ -13,6 +13,7 @@
 		3555A1642135768C00C46B41 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3555A1632135768C00C46B41 /* Utilities.swift */; };
 		3555A1662135783E00C46B41 /* CoreDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3555A1652135783E00C46B41 /* CoreDataHandler.swift */; };
 		3555A16821359B7D00C46B41 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3555A16721359B7D00C46B41 /* Constants.swift */; };
+		35A848C32146987D00AB4509 /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A848C22146987D00AB4509 /* Singleton.swift */; };
 		35ED67642138110D001CCFEB /* RegistrationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ED67632138110D001CCFEB /* RegistrationModel.swift */; };
 		35ED6766213A773A001CCFEB /* BookDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ED6765213A773A001CCFEB /* BookDetailsModel.swift */; };
 		35ED6769213B6900001CCFEB /* StringExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ED6768213B6900001CCFEB /* StringExt.swift */; };
@@ -64,6 +65,7 @@
 		3555A1632135768C00C46B41 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		3555A1652135783E00C46B41 /* CoreDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHandler.swift; sourceTree = "<group>"; };
 		3555A16721359B7D00C46B41 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		35A848C22146987D00AB4509 /* Singleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
 		35ED67632138110D001CCFEB /* RegistrationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationModel.swift; sourceTree = "<group>"; };
 		35ED6765213A773A001CCFEB /* BookDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailsModel.swift; sourceTree = "<group>"; };
 		35ED6768213B6900001CCFEB /* StringExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExt.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				3555A1632135768C00C46B41 /* Utilities.swift */,
 				3555A1652135783E00C46B41 /* CoreDataHandler.swift */,
 				3555A16721359B7D00C46B41 /* Constants.swift */,
+				35A848C22146987D00AB4509 /* Singleton.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -497,6 +500,7 @@
 				18FD9D1D213729CD005EAD05 /* PassangerDetailsVC.swift in Sources */,
 				35ED6771213C1DB6001CCFEB /* FlightVC.swift in Sources */,
 				35ED677D213EC504001CCFEB /* TextFieldExt.swift in Sources */,
+				35A848C32146987D00AB4509 /* Singleton.swift in Sources */,
 				35ED6779213DBD1C001CCFEB /* BookHistoryVCCell.swift in Sources */,
 				35F1C27F213459A7000DB590 /* HomeVC.swift in Sources */,
 				35F1C27B21345966000DB590 /* RegistrationVC.swift in Sources */,

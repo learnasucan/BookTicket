@@ -2,18 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:s/BookedTickets+CoreDataClass.swift">
-   </FileRef>
-   <FileRef
-      location = "group:s/BookedTickets+CoreDataProperties.swift">
-   </FileRef>
-   <FileRef
-      location = "group:s/Customer+CoreDataClass.swift">
-   </FileRef>
-   <FileRef
-      location = "group:s/Customer+CoreDataProperties.swift">
-   </FileRef>
-   <FileRef
       location = "group:Book Ticket.xcodeproj">
    </FileRef>
    <FileRef

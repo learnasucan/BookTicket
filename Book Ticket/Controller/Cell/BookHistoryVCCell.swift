@@ -35,7 +35,7 @@ class BookHistoryVCCell: UITableViewCell {
                 print(jsonNameArray)
             }
         } catch {
-//            #error()
+            //            #error()
             print("Error")
         }
         
@@ -62,15 +62,5 @@ class BookHistoryVCCell: UITableViewCell {
         self.ticketNumberLabel.text! = "Ticket Number: \(ticket.uniqueTicketNumber!)"
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
-    }
     
 }

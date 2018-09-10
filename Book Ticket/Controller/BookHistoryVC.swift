@@ -13,11 +13,12 @@ class BookHistoryVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var tickets: [BookedTickets]? {
-        didSet{
-            tableView.reloadData()
-        }
-    }
+    var tickets: [BookedTickets] = []
+//    var tickets: [BookedTickets]? {
+//        didSet{
+//            //tableView.reloadData()
+//        }
+//    }
     var users: [Customer] = []
     
     override func viewDidLoad() {
@@ -29,9 +30,9 @@ class BookHistoryVC: UIViewController {
         
         self.fetch { (complete) in
             if complete {
-                guard  let tickets = tickets else {
-                    return
-                }
+//                guard  let tickets = tickets else {
+//                    return
+//                }
                 if (tickets.count) >= 1 {
                     //tableView.isHidden = false
                     print(tickets as Any)
@@ -52,24 +53,27 @@ class BookHistoryVC: UIViewController {
         
     }
     
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func fetch(completion: (_ complete : Bool) -> ()) {
         guard let managedContext = appDelegate?.persistentContainer.viewContext else { return }
         
         let fetchRequest1 = NSFetchRequest<NSFetchRequestResult>(entityName: "Customer")
         let fetchRequest2 = NSFetchRequest<NSFetchRequestResult>(entityName: "BookedTickets")
         
+        let name = Utilities.getUserName()
+        fetchRequest2.predicate = NSPredicate(format: "customer.name = %@", name)
+        print(name)
         do {
             users = try managedContext.fetch(fetchRequest1) as! [Customer]
+            tickets = (try ((managedContext.fetch(fetchRequest2) as? [BookedTickets])))!
             
-            tickets = try ((managedContext.fetch(fetchRequest2) as? [BookedTickets]))
+            //You need to convert to NSManagedObject to use 'for' loops
+            for ticket in tickets {
+//                //get the Key Value pairs (although there may be a better way to do that...
+
+                print("\(ticket.age ?? "")\n \(ticket.customerName ?? "")\n \(ticket.passangerName ?? "")")
+            }
             print("Succesfully Fetched")
-            tableView.reloadData()
+//            tableView.reloadData()
             completion(true)
         } catch  {
             debugPrint("Could Not Fetch:\(error.localizedDescription)")
@@ -87,19 +91,20 @@ extension BookHistoryVC: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard  let tickets = tickets else {
-            return 0
-        }
+//        guard  let tickets = tickets else {
+//            return 0
+//        }
         return tickets.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "BookHistoryVCCell", for: indexPath) as? BookHistoryVCCell else { return UITableViewCell()}
+//        guard let cell = tableView.dequeueReusableCell(withIdentifier: "BookHistoryVCCell", for: indexPath) as? BookHistoryVCCell else { return UITableViewCell()}
         
-        guard  let tickets = tickets else {
-            return UITableViewCell()
-        }
+//        guard  let tickets = tickets else {
+//            return UITableViewCell()
+//        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BookHistoryVCCell", for: indexPath) as! BookHistoryVCCell
         
         let ticket = tickets[indexPath.row]
         cell.configureCell(ticket: ticket)

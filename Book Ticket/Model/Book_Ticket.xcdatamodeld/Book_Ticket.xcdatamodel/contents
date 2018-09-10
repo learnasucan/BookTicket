@@ -3,6 +3,7 @@
     <entity name="BookedTickets" representedClassName="BookedTickets" syncable="YES" codeGenerationType="class">
         <attribute name="age" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="created_at" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="customerName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dateOfJourney" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="fromDestination" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="passangerName" optional="YES" attributeType="String" syncable="YES"/>
@@ -20,7 +21,7 @@
         <relationship name="tickets" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="BookedTickets" inverseName="customer" inverseEntity="BookedTickets" syncable="YES"/>
     </entity>
     <elements>
-        <element name="BookedTickets" positionX="223" positionY="-18" width="128" height="163"/>
+        <element name="BookedTickets" positionX="223" positionY="-18" width="128" height="180"/>
         <element name="Customer" positionX="-63" positionY="-18" width="128" height="148"/>
     </elements>
 </model>

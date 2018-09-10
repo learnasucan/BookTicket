@@ -94,7 +94,7 @@ class PassangerDetailsVC: UIViewController {
         print(stringyfyNames)
         
         let stringyfyAges = Utilities.stringify(json: age)
-        let dataArray = stringyfyAges.data(using: .utf8)
+//        let dataArray = stringyfyAges.data(using: .utf8)
         let dataNameArray = stringyfyNames.data(using: .utf8)
         let dataAgeArray = stringyfyAges.data(using: .utf8)
         
@@ -132,6 +132,7 @@ class PassangerDetailsVC: UIViewController {
         
         
         createdAt = Utilities.getCurrentTimeStamp()
+        ticket.customerName = Utilities.getUserName()
         ticket.passangerName = stringyfyNames
         //print(stringName)
         ticket.age = stringyfyAges
@@ -146,6 +147,8 @@ class PassangerDetailsVC: UIViewController {
         ticket.uniqueTicketNumber = ticketNumber
         print(String.random())
         ticket.created_at = createdAt
+        //Singleton 
+        Singleton.user.addToTickets(ticket)
         print(createdAt)
         
         do {
