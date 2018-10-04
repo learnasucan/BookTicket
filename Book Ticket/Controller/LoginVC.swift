@@ -12,17 +12,21 @@ import CoreData
 class LoginVC: UIViewController {
     
     
+    //------------------------------------
+    //MARK: IBOutlets and variables
+    //------------------------------------
+    
     @IBOutlet weak var usenameTextField: UITextField!
-    
     @IBOutlet weak var passwordTextField: UITextField!
-    
     @IBOutlet weak var submitButton: UIButton!
+    
+    //------------------------------------
+    //MARK: Button Actions
+    //------------------------------------
     
     @IBAction func tapOnSubmit(_ sender: UIButton) {
         
         getData()
-        
-        
         
     }
     
@@ -39,8 +43,10 @@ class LoginVC: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    
-    //Retrieve the Data
+    //------------------------------------
+    //MARK: Retrieve the Data
+    //------------------------------------
+    //
     
     func getData() {
         //create a fetch request, telling it about the entity
@@ -59,7 +65,6 @@ class LoginVC: UIViewController {
                 //get the Key Value pairs (although there may be a better way to do that...
                 
                 print("\(customer.value(forKey: "name") ?? "psp") \(customer.value(forKey: "email") ?? "psp@g.in")\(customer.value(forKey: "password") ?? "psp")")
-                
                 
             }
         } catch {
@@ -105,9 +110,6 @@ class LoginVC: UIViewController {
         }
         
     }
-    
-    
-    
     
 }
 

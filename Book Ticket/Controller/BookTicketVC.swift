@@ -10,7 +10,9 @@ import UIKit
 
 class BookTicketVC: UIViewController{
     
-    //MARK:IBOutlets and Variables
+    //------------------------------------
+    //MARK: IBOutlets and variables
+    //------------------------------------
     
     @IBOutlet weak var inputTextField: UITextField!
     @IBOutlet weak var fromTextField: UITextField!
@@ -51,13 +53,9 @@ class BookTicketVC: UIViewController{
         return toolbar
     } ()
     
-    
-    
-    
     //MARK:Button Actions
     
     @IBAction func tapOnSave(_ sender: UIButton) {
-//        performSegue(withIdentifier: "PassangerDetailsVC", sender: self)
     }
     
     
@@ -69,30 +67,15 @@ class BookTicketVC: UIViewController{
         // Input data into the Array:
         cities = ["Mumbai","Pune","Delhi","Jaipur","Navi Mumbai","AMD","Noida"]
         
-//        self.pickerView.delegate = self
-//        self.pickerView.dataSource = self
-       
-       // show picker view when text field clicked
+        // show picker view when text field clicked
         
-      
     }
     
     func showDatePicker(){
+        
         //Formate Date
         
         datePicker.datePickerMode = .date
-       /*
-        //ToolBar
-        
-        let toolbar = UIToolbar();
-        toolbar.sizeToFit()
-        
-        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneDatePicker));
-        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
-        
-        toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
-        */
         inputTextField.inputAccessoryView = dateToolBar
         inputTextField.inputView = datePicker
         
@@ -103,11 +86,8 @@ class BookTicketVC: UIViewController{
         let picker = UIPickerView()
         picker.delegate = self
         
-//        picker.dataSource = self
-        
         self.fromTextField!.inputView = picker
         self.ToTextField!.inputView = picker
-        
         
         fromTextField.inputAccessoryView = pickerToolBar
         ToTextField.inputAccessoryView = pickerToolBar
@@ -123,9 +103,6 @@ class BookTicketVC: UIViewController{
     }
     
     @objc func donePicker(){
-        
-       
-//        fromTextField.text = pickerView
         self.view.endEditing(true)
     }
     
@@ -138,14 +115,11 @@ class BookTicketVC: UIViewController{
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: - Navigation
     
-    
-     // MARK: - Navigation
-     
-    
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
         
         if segue.destination is PassangerDetailsVC {
             let vc = segue.destination as? PassangerDetailsVC
@@ -154,8 +128,8 @@ class BookTicketVC: UIViewController{
             vc?.to = self.ToTextField.text
             vc?.passangers = Int(self.numerPassangerTextField.text!) ?? 0
         }
-     }
- 
+    }
+    
     
 }
 
@@ -176,25 +150,19 @@ extension BookTicketVC : UIPickerViewDelegate,UIPickerViewDataSource {
     // The data to return for the row and component (column) that's being passed in
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
-//        fromTextField.isSelected ?
-//        if fromTextField.isSelected {
-            return cities[row]
-//        } else {
-//            ToTextField.text! =
-//            return cities[row]
-//        }
+        return cities[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-
-         self.selectedCity =  cities[row]
+        
+        self.selectedCity =  cities[row]
         
         if ToTextField.isFirstResponder {
-           
+            
             self.ToTextField.text = selectedCity
             
         } else {
-           
+            
             self.fromTextField.text = selectedCity
         }
         
